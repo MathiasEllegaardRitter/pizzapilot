@@ -16,7 +16,9 @@ use App\Http\Controllers\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/breakes', [BreakesController::class, 'readAll']);
+Route::post('/breakes', [BreakesController::class, 'create'])->name('breakes.create');
 
 
 Route::get('/', function () {
