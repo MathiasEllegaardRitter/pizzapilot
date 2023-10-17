@@ -5,7 +5,7 @@
 /public/storage
 /storage/*.key
 /vendor
-/database/seeders
+database/seeders/DatabaseSeeder.php
 .env
 .env.backup
 .env.production
