@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Breakes;
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Breakes::factory(8)->create();
+        
+        //Breakes::factory(8)->create();
+
+       // Product::factory(5)->create();
+
     }
 }
