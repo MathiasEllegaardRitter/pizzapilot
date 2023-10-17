@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/products', [ProductController::class, 'readAll']);
+Route::post('/products', [ProductController::class, 'create'])->name('products.create');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
