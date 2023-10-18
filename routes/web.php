@@ -21,12 +21,13 @@ Route::get('/breakes', [BreakesController::class, 'readAll']);
 Route::post('/breakes', [BreakesController::class, 'create'])->name('breakes.create');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'readAll']);
 
 Route::get('/products', [ProductController::class, 'readAll']);
 Route::post('/products', [ProductController::class, 'create'])->name('products.create');
+Route::post('/products/find', [ProductController::class, 'get'])->name('products.findProduct');
+Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
+Route::post('/products/delete', [ProductController::class, 'delete'])->name('products.delete');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
