@@ -16,6 +16,16 @@
     </form>
 <div>
 
+<div>
+    <h1>Delete product</h1>
+    <form action="{{ route('products.delete') }}" method="post">
+        @csrf 
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <button type="submit">Delete product</button>
+    </form>
+</div>
+
+
 @else
 <h1>No product was found<h1>
 @endif
