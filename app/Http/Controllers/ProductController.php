@@ -15,6 +15,19 @@ class ProductController extends Controller
         return view('products', ['products' => $products]);
     }
 
+    public function get(Request $request)
+    {
+        // Find a productId from request
+        $productId = $request->input('product_id');
+        // Find product from Database
+        $product = Product::findOrFail($productId);
+        // If product exist else return error
+        if($product)
+        {
+            return view('product', ['product' => $product]);
+        }
+    }
+
     public function create(Request $request)
     {
 
@@ -39,8 +52,6 @@ class ProductController extends Controller
 
         // Save to Database
         $product->save();
-
- 
 
         return redirect()->route('products.create');
     }
