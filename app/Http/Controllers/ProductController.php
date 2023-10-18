@@ -31,6 +31,23 @@ class ProductController extends Controller
         }
     }
 
+
+    public function delete(Request $request)
+    {
+        // Find a productId from request
+        $productId = $request->input("product_id");
+        // Find the product from database
+        $product = Product::findOrFail($productId);
+        if($product)
+        {
+            $product->delete();
+            return redirect()->route('products.create');
+        } else
+        {
+            // TODO Error
+        }
+    }
+
     public function update(Request $request)
     {
         // Find a productId from request
