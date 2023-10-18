@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
-use App\Filament\Resources\ProductResource\RelationManagers\IngredientsRelationManager;
-use App\Models\Product;
+use App\Filament\Resources\IngredientResource\Pages;
+use App\Filament\Resources\IngredientResource\RelationManagers;
+use App\Models\Ingredient;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,12 +12,10 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\Select;
 
-
-class ProductResource extends Resource
+class IngredientResource extends Resource
 {
-    protected static ?string $model = Product::class;
+    protected static ?string $model = Ingredient::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,18 +23,12 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('product_id')
+                    ->required()
+                    ->numeric(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('$'),
-                    Select::make('category_id')
-    ->relationship(name: 'category', titleAttribute: 'name')
             ]);
     }
 
@@ -45,6 +36,9 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('product_id')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -55,11 +49,6 @@ class ProductResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('price')
-                    ->money()
-                    ->sortable(),
             ])
             ->filters([
                 //
@@ -81,16 +70,15 @@ class ProductResource extends Resource
     {
         return [
             //
-            IngredientsRelationManager::class
         ];
     }
     
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProducts::route('/'),
-            'create' => Pages\CreateProduct::route('/create'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'index' => Pages\ListIngredients::route('/'),
+            'create' => Pages\CreateIngredient::route('/create'),
+            'edit' => Pages\EditIngredient::route('/{record}/edit'),
         ];
     }    
 }
