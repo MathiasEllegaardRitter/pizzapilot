@@ -10,51 +10,33 @@
             <li>{{ $product->name }}</li>
         @endforeach
     </ul>
-
+    <div>
     <form action="{{ route('products.create') }}" method="post">
-
- 
-
         @csrf
     
-     
-    
-     
-    
-     
-    
         <label for="name">Name:</label>
-    
-     
-    
         <input type="text" name="name" required>
     
-     
-    
-     
-    
-     
-    
         <label for="price">Price:</label>
-    
-     
-    
         <input type="number" name="price" required>
     
-     
-    
-     
-    
         <label for="description">Description:</label>
-        <textarea type="text" name="description" required></textarea>
-    
-       
+        <textarea name="description" required></textarea>
     
         <button type="submit">Add Product</button>
-    
-     
-    
     </form>
+</div>
+
+    <div> 
+        <h1>Find product</h1>
+        <form action="{{ route('products.findProduct') }}" method="post">
+
+            @csrf
+            <label for="product_id">productId:</label>
+            <input type="text" name="product_id" required>
+            <button type="submit">Find Product</button>
+        </form>
+    </div>
 
 
 
