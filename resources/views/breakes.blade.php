@@ -28,34 +28,24 @@
     </div>
 </div>
 
-<div class="container mt-5">
-    <h2>Create Break</h2>
+<div>
 
-    <form action="{{ route('breakes.create') }}" method="post">
+    <h1>Find break</h1>
+
+    <form action="{{ route('breakes.findBreak') }}" method="post">
+
+
+
         @csrf
 
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" name="name" required>
-        </div>
+        <label for="break_id">BreakId:</label>
 
-        <div class="form-group">
-            <label for="startTime">Start Time:</label>
-            <input type="datetime-local" class="form-control" name="startTime" required>
-        </div>
+        <input type="text" name="break_id" required>
 
-        <div class="form-group">
-            <label for="endTime">End Time:</label>
-            <input type="datetime-local" class="form-control" name="endTime" required>
-        </div>
+        <button type="submit">Find Break</button>
 
-        <div class="form-group">
-            <label for="reason">Reason:</label>
-            <textarea class="form-control" name="reason" required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Add Break</button>
     </form>
+
 </div>
 
 </body>
