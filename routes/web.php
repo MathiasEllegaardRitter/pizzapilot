@@ -21,9 +21,7 @@ Route::get('/breakes', [BreakesController::class, 'readAll']);
 Route::post('/breakes', [BreakesController::class, 'create'])->name('breakes.create');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'readAll']);
 
 Route::get('/products', [ProductController::class, 'readAll']);
 Route::post('/products', [ProductController::class, 'create'])->name('products.create');
