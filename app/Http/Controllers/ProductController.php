@@ -25,8 +25,34 @@ class ProductController extends Controller
         if($product)
         {
             return view('product', ['product' => $product]);
+        } else
+        {
+            // TODO Error
         }
     }
+
+    public function update(Request $request)
+    {
+        // Find a productId from request
+        $productId = $request->input("product_id");
+        // Find the product from database
+        $product = Product::findOrFail($productId);
+        // Update the product with the new values and save if exist
+        if($product)
+        {
+            $product->name = $request->input('name');
+            $product->price = $request->input('price');
+            $product->description = $request->input('description');
+            $product->save();
+            // Load the same site  i am on.
+            return view('product', ['product' => $product]);
+        } else {
+            // TODO Error
+        }
+
+    }
+
+
 
     public function create(Request $request)
     {
