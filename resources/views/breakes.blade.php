@@ -18,8 +18,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $break->name }}</h5>
                     <p class="card-text">
-                        <strong>Start Time:</strong> {{ $break->startTime }} <br>
-                        <strong>End Time:</strong> {{ $break->endTime }} <br>
+                        <strong>Start Time:</strong> {{ $break->start_date }} <br>
+                        <strong>End Time:</strong> {{ $break->end_date }} <br>
                         <strong>Reason:</strong> {{ $break->reason }}
                     </p>
                 </div>
@@ -40,13 +40,13 @@
         </div>
 
         <div class="form-group">
-            <label for="startTime">Start Time:</label>
-            <input type="datetime-local" class="form-control" name="startTime" required>
+            <label for="start_date">Start Time:</label>
+            <input type="datetime-local" class="form-control" name="start_date" required>
         </div>
 
         <div class="form-group">
-            <label for="endTime">End Time:</label>
-            <input type="datetime-local" class="form-control" name="endTime" required>
+            <label for="end_date">End Time:</label>
+            <input type="datetime-local" class="form-control" name="end_date" required>
         </div>
 
         <div class="form-group">

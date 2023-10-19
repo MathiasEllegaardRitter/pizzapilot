@@ -20,8 +20,8 @@ class BreakesController extends Controller
         $break = new Breakes;
         //Set the properties of the new "Breakes" instance with data from the form
         $break->name = $request->input('name');
-        $break->startTime = $request->input('startTime');
-        $break->endTime = $request->input('endTime');
+        $break->start_date = $request->input('start_date');
+        $break->end_date = $request->input('end_date');
         $break->reason = $request->input('reason');
         // saves the new "Breakes" to the DB
         $break->save();

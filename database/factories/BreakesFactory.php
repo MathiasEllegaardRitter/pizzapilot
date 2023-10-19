@@ -17,8 +17,8 @@ class BreakesFactory extends Factory
     public function definition(): array
     {
         return [
-            'startTime' => $this->faker->dateTime,
-            'endTime' => $this->faker->dateTime,
+            'start_date' => $this->faker->dateTime,
+            'end_date' => $this->faker->dateTime,
             'name' => $this->faker->word,
             'reason' => $this->faker->sentence,
             //
