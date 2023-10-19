@@ -23,9 +23,9 @@ class BreakesResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\DateTimePicker::make('startTime')
+                Forms\Components\DateTimePicker::make('start_date')
                     ->required(),
-                Forms\Components\DateTimePicker::make('endTime')
+                Forms\Components\DateTimePicker::make('end_date')
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
@@ -48,10 +48,10 @@ class BreakesResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('startTime')
+                Tables\Columns\TextColumn::make('start_date')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('endTime')
+                Tables\Columns\TextColumn::make('end_date')
                     ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
