@@ -77,16 +77,16 @@
         },
         {
             "name": "blade-ui-kit/blade-icons",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blade-ui-kit/blade-icons.git",
-                "reference": "4d6b6b2548b1994a777211a985e18691701891e4"
+                "reference": "b5e6603218e2347ac81cb780bc6f71c8c3b31f5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/4d6b6b2548b1994a777211a985e18691701891e4",
-                "reference": "4d6b6b2548b1994a777211a985e18691701891e4",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/b5e6603218e2347ac81cb780bc6f71c8c3b31f5b",
+                "reference": "b5e6603218e2347ac81cb780bc6f71c8c3b31f5b",
                 "shasum": ""
             },
             "require": {
@@ -148,9 +148,13 @@
                 {
                     "url": "https://github.com/sponsors/driesvints",
                     "type": "github"
+                },
+                {
+                    "url": "https://www.paypal.com/paypalme/driesvints",
+                    "type": "paypal"
                 }
             ],
-            "time": "2023-06-09T15:47:26+00:00"
+            "time": "2023-10-18T10:50:13+00:00"
         },
         {
             "name": "brick/math",
@@ -3138,16 +3142,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.0.9",
+            "version": "v3.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "53db28bcf433e63b7ce6346244091a33adcd9f2f"
+                "reference": "cae998aa9a474dc0de81869ab1536014c7b31a64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/53db28bcf433e63b7ce6346244091a33adcd9f2f",
-                "reference": "53db28bcf433e63b7ce6346244091a33adcd9f2f",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/cae998aa9a474dc0de81869ab1536014c7b31a64",
+                "reference": "cae998aa9a474dc0de81869ab1536014c7b31a64",
                 "shasum": ""
             },
             "require": {
@@ -3200,7 +3204,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.0.9"
+                "source": "https://github.com/livewire/livewire/tree/v3.0.10"
             },
             "funding": [
                 {
@@ -3208,7 +3212,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-17T16:42:14+00:00"
+            "time": "2023-10-18T11:18:12+00:00"
         },
         {
             "name": "masterminds/html5",
