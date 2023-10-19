@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime("end_date");
             $table->string("name");
             $table->string("reason");
+            $table->foreignId("schedule_id")->nullable();
         });
     }
 
