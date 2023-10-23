@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CustomerResource\Pages;
-use App\Filament\Resources\CustomerResource\RelationManagers;
 use App\Models\Customer;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -31,6 +30,12 @@ class CustomerResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required(),
+                    Forms\Components\TextInput::make('deliver_id')
+                    ->street()
+                    ->email()
+                    ->password()
+                    ->tel()
+                    ->url()   
             ]);
     }
 
@@ -51,13 +56,20 @@ class CustomerResource extends Resource
                 //     ->sortable(),
                 // Tables\Columns\TextColumn::make('delivery_id')
                 //     ->searchable(),
+                Tables\Columns\TextColumn::make('id')
+                    ->label('id')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Name')
                     ->numeric()
                     ->sortable(),
                     Tables\Columns\TextColumn::make('user.email')
                     ->label('Email')
-                    ->searchable()
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('delivery.street')
+                    ->label("Street")
+                    ->searchable(),
+                    
             ])
             ->filters([
                 //
@@ -78,7 +90,7 @@ class CustomerResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            
         ];
     }
     

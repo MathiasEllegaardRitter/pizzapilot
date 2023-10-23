@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("city");
             $table->string("comment");
             $table->integer("postal_code");
+            $table->foreignId("customer_id")->nullable();
         });
     }
 
