@@ -23,8 +23,8 @@ class Customer extends Model
         return $this->belongsTo(User::class);
     }
     // Customer has one delivery address
-    public function delivery(): HasOne
+    public function deliveries(): HasMany
     {
-        return $this->hasOne(Delivery::class);        
+        return $this->hasMany(Delivery::class);        
     }
 }

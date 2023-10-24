@@ -8,6 +8,9 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Filament\Resources\CustomerResource\RelationManagers\DeliveriesRelationManager;
+use App\Filament\Resources\CustomerResource\RelationManagers\DeliveryRelationManager;
+use Filament\Forms\FormsComponent;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -30,12 +33,9 @@ class CustomerResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required(),
-                    Forms\Components\TextInput::make('deliver_id')
-                    ->street()
-                    ->email()
-                    ->password()
-                    ->tel()
-                    ->url()   
+                    // Forms\Components\TextInput::make('name')
+                    // ->required()
+                    // ->maxLength(255),
             ]);
     }
 
@@ -66,7 +66,7 @@ class CustomerResource extends Resource
                     Tables\Columns\TextColumn::make('user.email')
                     ->label('Email')
                     ->searchable(),
-                    Tables\Columns\TextColumn::make('delivery.street')
+                    Tables\Columns\TextColumn::make('deliveries.street')
                     ->label("Street")
                     ->searchable(),
                     
@@ -90,7 +90,7 @@ class CustomerResource extends Resource
     public static function getRelations(): array
     {
         return [
-            
+            DeliveriesRelationManager::class
         ];
     }
     

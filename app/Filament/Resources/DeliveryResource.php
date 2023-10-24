@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CustomerResource\RelationManagers\DeliveriesRelationManager;
 use App\Filament\Resources\DeliveryResource\Pages;
 use App\Filament\Resources\DeliveryResource\RelationManagers;
 use App\Models\Delivery;
@@ -13,7 +12,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use PhpParser\Node\Stmt\Label;
 
 class DeliveryResource extends Resource
 {
@@ -25,20 +23,21 @@ class DeliveryResource extends Resource
     {
         return $form
             ->schema([
+                //
                 Forms\Components\TextInput::make('street')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('city')
+                    Forms\Components\TextInput::make('city')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('comment')
+                    Forms\Components\TextInput::make('comment')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('postal_code')
+                    Forms\Components\TextInput::make('postal_code')
                     ->required()
+                    ->maxLength(255)
                     ->numeric(),
-                Forms\Components\Select::make('customer_id')
-                    ->relationship('customer', 'id'),
+                   
             ]);
     }
 
@@ -46,24 +45,17 @@ class DeliveryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                //
                 Tables\Columns\TextColumn::make('street')
+                    ->label("Street")
                     ->searchable(),
-                Tables\Columns\TextColumn::make('city')
+                    Tables\Columns\TextColumn::make('city')
+                    ->label("City")
                     ->searchable(),
-                Tables\Columns\TextColumn::make('comment')
+                    Tables\Columns\TextColumn::make('postal_code')
+                    ->label("Postal code")
                     ->searchable(),
-                Tables\Columns\TextColumn::make('postal_code')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('customer.id')
+                    Tables\Columns\TextColumn::make('customer.id')
                     ->label("Customer id")
                     ->numeric()
                     ->sortable(),
@@ -73,7 +65,7 @@ class DeliveryResource extends Resource
             ])
             ->filters([
                 //
-            ])
+            ])  
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
