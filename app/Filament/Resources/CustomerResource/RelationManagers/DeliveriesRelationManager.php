@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\DeliverynamResource\RelationManagers;
+namespace App\Filament\Resources\CustomerResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -18,40 +18,46 @@ class DeliveriesRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('street')
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\TextInput::make('city')
+                    ->required()
+                    ->maxLength(255),
+                    Forms\Components\TextInput::make('comment')
+                    ->required()
+                    ->maxLength(255),
+                    Forms\Components\TextInput::make('postal_code')
+                    ->required()
+                    ->maxLength(255)
+                    ->numeric(),
             ]);
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('name')
+            ->recordTitleAttribute('street')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('street'),
             ])
             ->filters([
                 //
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
-                Tables\Actions\AttachAction::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DetachAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DetachBulkAction::make(),
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
-                Tables\Actions\AttachAction::make(),
             ]);
     }
 }
