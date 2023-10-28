@@ -33,12 +33,14 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\RichEditor::make('instructions')
+                    ->required(),
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
                     ->prefix('$'),
                     Select::make('category_id')
-    ->relationship(name: 'category', titleAttribute: 'name')
+                    ->relationship(name: 'category', titleAttribute: 'name')
             ]);
     }
 
