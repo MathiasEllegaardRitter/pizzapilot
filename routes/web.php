@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BreakesController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,6 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/breakes', [BreakesController::class, 'readAll']);
 Route::post('/breakes', [BreakesController::class, 'create'])->name('breakes.create');
-
 
 Route::get('/', [ProductController::class, 'readAll']);
 

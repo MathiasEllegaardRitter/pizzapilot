@@ -14,6 +14,7 @@ class Product extends Model
     protected $guarded = [];
     
     public function ingredients()
+
     {
         return $this->belongsToMany(Ingredient::class, 'ingredient_products')->withPivot(['quantity'])->withTimestamps();
     }
@@ -24,9 +25,11 @@ class Product extends Model
     }
 
 
+
     public function ingredient_product(): BelongsTo
     {
         return $this->belongsTo(Ingredient_product::class);
     }
+
 
 }

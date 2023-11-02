@@ -3,21 +3,19 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ScheduleResource\Pages;
-use App\Filament\Resources\ScheduleResource\RelationManagers;
 use App\Models\Schedule;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ScheduleResource extends Resource
 {
     protected static ?string $model = Schedule::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clock';
+
     protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
@@ -25,9 +23,9 @@ class ScheduleResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TimePicker::make('start_time')
-                ->required(),
+                    ->required(),
                 Forms\Components\TimePicker::make('end_time')
-                ->required(),
+                    ->required(),
             ]);
     }
 
@@ -36,11 +34,11 @@ class ScheduleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('start_time')
-                ->time()
-                ->sortable(),
+                    ->time()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('end_time')
-                ->time()
-                ->sortable(),
+                    ->time()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -54,14 +52,14 @@ class ScheduleResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -69,5 +67,5 @@ class ScheduleResource extends Resource
             'create' => Pages\CreateSchedule::route('/create'),
             'edit' => Pages\EditSchedule::route('/{record}/edit'),
         ];
-    }    
+    }
 }
