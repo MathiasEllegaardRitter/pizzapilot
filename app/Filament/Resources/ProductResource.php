@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Filament\Resources\ProductResource\RelationManagers\IngredientProductRelationManager;
 use App\Filament\Resources\ProductResource\RelationManagers\IngredientsRelationManager;
+// use App\Filament\Resources\ProductResource\RelationManagers\IngredientProductRelationManager;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -84,7 +86,7 @@ class ProductResource extends Resource
     {
         return [
             //
-            IngredientsRelationManager::class
+            IngredientsRelationManager::class,
         ];
     }
     
