@@ -3,24 +3,21 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Filament\Resources\ProductResource\RelationManagers\IngredientsRelationManager;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\Select;
-
 
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
+
     protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
@@ -33,14 +30,14 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\RichEditor::make('instructions')
+                Forms\Components\RichEditor::make('instructions')
                     ->required(),
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
                     ->prefix('$'),
-                    Select::make('category_id')
-                    ->relationship(name: 'category', titleAttribute: 'name')
+                Select::make('category_id')
+                    ->relationship(name: 'category', titleAttribute: 'name'),
             ]);
     }
 
@@ -79,15 +76,15 @@ class ProductResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
-            IngredientsRelationManager::class
+            IngredientsRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -95,5 +92,5 @@ class ProductResource extends Resource
             'create' => Pages\CreateProduct::route('/create'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
-    }    
+    }
 }

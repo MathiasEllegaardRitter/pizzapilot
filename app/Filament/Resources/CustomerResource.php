@@ -3,23 +3,20 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CustomerResource\Pages;
+use App\Filament\Resources\CustomerResource\RelationManagers\DeliveriesRelationManager;
 use App\Models\Customer;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use App\Filament\Resources\CustomerResource\RelationManagers\DeliveriesRelationManager;
-use App\Filament\Resources\CustomerResource\RelationManagers\DeliveryRelationManager;
-use Filament\Forms\FormsComponent;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+
     protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
@@ -33,9 +30,9 @@ class CustomerResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required(),
-                    // Forms\Components\TextInput::make('name')
-                    // ->required()
-                    // ->maxLength(255),
+                // Forms\Components\TextInput::make('name')
+                // ->required()
+                // ->maxLength(255),
             ]);
     }
 
@@ -63,13 +60,13 @@ class CustomerResource extends Resource
                     ->label('Name')
                     ->numeric()
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('user.email')
+                Tables\Columns\TextColumn::make('user.email')
                     ->label('Email')
                     ->searchable(),
-                    Tables\Columns\TextColumn::make('deliveries.street')
-                    ->label("Street")
+                Tables\Columns\TextColumn::make('deliveries.street')
+                    ->label('Street')
                     ->searchable(),
-                    
+
             ])
             ->filters([
                 //
@@ -86,14 +83,14 @@ class CustomerResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
-            DeliveriesRelationManager::class
+            DeliveriesRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -101,5 +98,5 @@ class CustomerResource extends Resource
             'create' => Pages\CreateCustomer::route('/create'),
             'edit' => Pages\EditCustomer::route('/{record}/edit'),
         ];
-    }    
+    }
 }
