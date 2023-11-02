@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Breakes;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class BreakesController extends Controller
 {
@@ -12,6 +11,7 @@ class BreakesController extends Controller
     {
         // reads all the breakes in the DB
         $breakes = Breakes::all();
+
         return view('breakes', ['breakes' => $breakes]);
     }
 
@@ -25,8 +25,8 @@ class BreakesController extends Controller
         $break->reason = $request->input('reason');
         // saves the new "Breakes" to the DB
         $break->save();
+
         // redirects the user to "breakes.create" route after the data has been saved
         return redirect()->route('breakes.create');
     }
-
 }

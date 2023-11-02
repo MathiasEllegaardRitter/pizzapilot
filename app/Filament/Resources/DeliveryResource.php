@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\DeliveryResource\Pages;
-use App\Filament\Resources\DeliveryResource\RelationManagers;
 use App\Models\Delivery;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class DeliveryResource extends Resource
 {
@@ -27,17 +24,17 @@ class DeliveryResource extends Resource
                 Forms\Components\TextInput::make('street')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('city')
+                Forms\Components\TextInput::make('city')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('comment')
+                Forms\Components\TextInput::make('comment')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('postal_code')
+                Forms\Components\TextInput::make('postal_code')
                     ->required()
                     ->maxLength(255)
                     ->numeric(),
-                   
+
             ]);
     }
 
@@ -47,25 +44,25 @@ class DeliveryResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('street')
-                    ->label("Street")
+                    ->label('Street')
                     ->searchable(),
-                    Tables\Columns\TextColumn::make('city')
-                    ->label("City")
+                Tables\Columns\TextColumn::make('city')
+                    ->label('City')
                     ->searchable(),
-                    Tables\Columns\TextColumn::make('postal_code')
-                    ->label("Postal code")
+                Tables\Columns\TextColumn::make('postal_code')
+                    ->label('Postal code')
                     ->searchable(),
-                    Tables\Columns\TextColumn::make('customer.id')
-                    ->label("Customer id")
+                Tables\Columns\TextColumn::make('customer.id')
+                    ->label('Customer id')
                     ->numeric()
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('customer.user.name')
-                    ->label("Customer name")
+                Tables\Columns\TextColumn::make('customer.user.name')
+                    ->label('Customer name')
                     ->searchable(),
             ])
             ->filters([
                 //
-            ])  
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -78,14 +75,14 @@ class DeliveryResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -93,5 +90,5 @@ class DeliveryResource extends Resource
             'create' => Pages\CreateDelivery::route('/create'),
             'edit' => Pages\EditDelivery::route('/{record}/edit'),
         ];
-    }    
+    }
 }

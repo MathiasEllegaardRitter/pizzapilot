@@ -7,8 +7,6 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class DeliveriesRelationManager extends RelationManager
 {
@@ -21,13 +19,13 @@ class DeliveriesRelationManager extends RelationManager
                 Forms\Components\TextInput::make('street')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('city')
+                Forms\Components\TextInput::make('city')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('comment')
+                Forms\Components\TextInput::make('comment')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('postal_code')
+                Forms\Components\TextInput::make('postal_code')
                     ->required()
                     ->maxLength(255)
                     ->numeric(),

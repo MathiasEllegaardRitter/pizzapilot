@@ -12,7 +12,7 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
-    
+
     public function ingredients(): HasMany
     {
         return $this->hasMany(Ingredient::class);
@@ -22,5 +22,4 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
 }
