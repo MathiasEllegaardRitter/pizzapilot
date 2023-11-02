@@ -12,14 +12,24 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+    
+    public function ingredients()
 
-    public function ingredients(): HasMany
     {
-        return $this->hasMany(Ingredient::class);
+        return $this->belongsToMany(Ingredient::class, 'ingredient_products')->withPivot(['quantity'])->withTimestamps();
     }
 
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
+
+
+
+    public function ingredient_product(): BelongsTo
+    {
+        return $this->belongsTo(Ingredient_product::class);
+    }
+
+
 }
