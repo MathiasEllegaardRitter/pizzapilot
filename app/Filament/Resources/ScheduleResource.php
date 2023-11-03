@@ -27,7 +27,6 @@ class ScheduleResource extends Resource
                 Forms\Components\TimePicker::make('start_time')->hoursStep(1)->seconds(false),
                 Forms\Components\TimePicker::make('end_time')->hoursStep(1)->seconds(false),
                 Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\TextInput::make('text'),
 
                 Forms\Components\Toggle::make('special')->live(),
                 Forms\Components\Select::make('days')->options([

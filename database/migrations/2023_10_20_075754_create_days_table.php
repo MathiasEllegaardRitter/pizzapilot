@@ -18,7 +18,6 @@ return new class extends Migration
             $table->time('end_time');
             $table->string('name');
             $table->dateTime('date')->nullable();
-            $table->boolean('type')->default('Weekday');
             $table->foreignId('schedule_id')->constrained("schedules")->cascadeOnDelete();
         });
     }
