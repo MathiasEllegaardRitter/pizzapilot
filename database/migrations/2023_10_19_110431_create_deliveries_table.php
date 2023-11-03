@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("street");
-            $table->string("city");
-            $table->string("comment");
-            $table->integer("postal_code");
+            $table->string('street');
+            $table->string('city');
+            $table->string('comment');
+            $table->integer('postal_code');
+            $table->foreignId('customer_id')->nullable();
         });
     }
 

@@ -21,12 +21,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // 
+        //
         Filament::serving(function () {
             Filament::registerNavigationGroups([
                 NavigationGroup::make()
-                     ->label('Products')
-                     ->icon('heroicon-s-shopping-cart'),
+                    ->label('Products')
+                    ->icon('heroicon-s-shopping-cart'),
                 NavigationGroup::make()
                     ->label('Categories')
                     ->icon('heroicon-s-pencil'),

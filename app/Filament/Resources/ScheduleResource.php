@@ -17,8 +17,10 @@ use Filament\Forms\Get;
 class ScheduleResource extends Resource
 {
     protected static ?string $model = Schedule::class;
+  
+    protected static ?string $navigationIcon = 'heroicon-o-clock';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {
@@ -48,7 +50,7 @@ class ScheduleResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
@@ -56,7 +58,7 @@ class ScheduleResource extends Resource
             DaysRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -64,5 +66,5 @@ class ScheduleResource extends Resource
             'create' => Pages\CreateSchedule::route('/create'),
             'edit' => Pages\EditSchedule::route('/{record}/edit'),
         ];
-    }    
+    }
 }

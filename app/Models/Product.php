@@ -13,14 +13,23 @@ class Product extends Model
 
     protected $guarded = [];
     
-    public function ingredients(): HasMany
+    public function ingredients()
+
     {
-        return $this->hasMany(Ingredient::class);
+        return $this->belongsToMany(Ingredient::class, 'ingredient_products')->withPivot(['quantity'])->withTimestamps();
     }
 
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
+
+
+
+    public function ingredient_product(): BelongsTo
+    {
+        return $this->belongsTo(Ingredient_product::class);
+    }
+
 
 }
