@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('pizza_stores', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string("location");
+            $table->foreignId('user_id');
         });
     }
 
