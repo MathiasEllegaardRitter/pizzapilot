@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ScheduleResource\Pages;
-use App\Filament\Resources\ScheduleResource\RelationManagers;
+use App\Filament\Resources\ScheduleResource\RelationManagers\DaysRelationManager;
 use App\Models\Schedule;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -24,22 +24,8 @@ class ScheduleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TimePicker::make('start_time')->hoursStep(1)->seconds(false),
-                Forms\Components\TimePicker::make('end_time')->hoursStep(1)->seconds(false),
                 Forms\Components\TextInput::make('name')->required(),
-
-                Forms\Components\Toggle::make('special')->live(),
-                Forms\Components\Select::make('days')->options([
-                    0 => 'Mandag',
-                    1 => 'Tirsdag',
-                    2 => 'Onsdag',
-                    3 => 'Torsdag',
-                    4 => 'Fredag',
-                    5 => 'Lørdag',
-                    6 => 'Søndag'
-                ])->multiple()
-                ->columnSpanFull()
-                ->hidden(fn (Get $get): bool => $get('special')),
+                Forms\Components\Toggle::make('is_active'),
             ]);
     }
 
@@ -47,17 +33,8 @@ class ScheduleResource extends Resource
     {
         return $table
             ->columns([
-
                 Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('text')->searchable(),
-                Tables\Columns\TextColumn::make('start_time')
-                    ->time('H:i')
-                    ->sortable(),
-                    
-                Tables\Columns\TextColumn::make('end_time')
-                    ->time('H:i')
-                    ->sortable(),
-                Tables\Columns\ToggleColumn::make('special')->hidden(),
+                Tables\Columns\TextColumn::make('is_active')->searchable(),
             ])
             ->filters([
                 //
@@ -76,6 +53,7 @@ class ScheduleResource extends Resource
     {
         return [
             //
+            DaysRelationManager::class,
         ];
     }
     

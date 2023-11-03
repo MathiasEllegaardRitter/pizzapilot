@@ -10,5 +10,12 @@ class Day extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+
+    public function schedules()
+    {
+        return $this->belongsToMany(Schedule::class, 'day_schedules')->withPivot("start_time");
+    }
+
 }
 

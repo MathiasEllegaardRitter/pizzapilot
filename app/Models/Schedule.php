@@ -16,8 +16,8 @@ class Schedule extends Model
         return $this->hasMany(Breakes::class);
     }
 
-    public function days(): HasMany
+    public function days()
     {
-        return $this->hasMany(Days::class);
+        return $this->belongsToMany(Day::class, 'day_schedules')->withPivot("start_time", "end_time", "is_special", "date");
     }
 }
