@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('menu_name');
+            $table->boolean('is_active')->default(false);
         });
     }
 
