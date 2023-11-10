@@ -25,7 +25,7 @@ class MenuResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('menu_name')->required(),
                 Forms\Components\Toggle::make('is_active'),
-
+                
             ]);
     }
 

@@ -13,7 +13,7 @@ class Menu extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Day::class, 'menu_product');
+        return $this->belongsToMany(Product::class, 'menu_products');
     }
 
 }

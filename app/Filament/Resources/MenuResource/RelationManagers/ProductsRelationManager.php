@@ -18,13 +18,24 @@ class ProductsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                    Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('category_id')
+                ->relationship(name: 'category', titleAttribute: 'name'),
+                Forms\Components\TextInput::make('description')
+                    ->required()
+                    ->maxLength(255),
+                
+                Forms\Components\TextInput::make('price')
+                    ->required()
+                    ->numeric()
+                    ->prefix('$'),
+                    Forms\Components\RichEditor::make('instructions')
+                    ->required(),
+                
                 // Forms\Components\TextInput::make('description'),
                 // Forms\Components\TextInput::make('price'),
-
-
 
             ]);
     }
@@ -43,6 +54,7 @@ class ProductsRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
+                Tables\Actions\AttachAction::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

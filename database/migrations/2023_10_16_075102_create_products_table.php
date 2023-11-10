@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('instructions');
             $table->float('price');
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->nullable();
         });
     }
 

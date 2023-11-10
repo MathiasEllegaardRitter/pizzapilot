@@ -16,8 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreignId('menu_id')->references('id')->on('menus')->onDelete('cascade');
-            $table->string('description')->nullable();
-            $table->float('price');
         });
     }
 

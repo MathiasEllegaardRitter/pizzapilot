@@ -34,8 +34,7 @@ class Product extends Model
 
     public function menus()
     {
-        return $this->belongsToMany(Schedule::class, 'menu_product')->withPivot("name", "price", "description");
+        return $this->belongsToMany(Menu::class, 'menu_products');
     }
-
 
 }
