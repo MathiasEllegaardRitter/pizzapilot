@@ -12,6 +12,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
 
 class ProductResource extends Resource
 {
@@ -39,6 +41,12 @@ class ProductResource extends Resource
                     ->prefix('$'),
                 Select::make('category_id')
                     ->relationship(name: 'category', titleAttribute: 'name'),
+                FileUpload::make('image')
+                ->acceptedFileTypes(['image/webp'])
+                ->maxSize(512),
+                // ->imageResizeTargetWidth('1920') 
+                // ->imageResizeTargetHeight('1080')
+                
             ]);
     }
 
@@ -61,6 +69,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),
+                ImageColumn::make('image'),
             ])
             ->filters([
                 //

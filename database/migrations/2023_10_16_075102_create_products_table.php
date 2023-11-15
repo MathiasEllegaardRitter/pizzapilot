@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('instructions');
             $table->float('price');
             $table->foreignId('category_id')->nullable();
+            $table->string('image')->nullable();    
         });
     }
 
