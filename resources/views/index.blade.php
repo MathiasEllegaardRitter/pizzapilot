@@ -14,6 +14,7 @@
 
         <livewire:navbar />
 
+        <livewire:hero-section />
 
     </div>
 
