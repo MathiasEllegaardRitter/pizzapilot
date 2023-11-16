@@ -7,13 +7,15 @@
     <title>PizzaPilot</title>
     @vite('resources/css/app.css')
 </head>
-<body class="h-screen w-screen bg-color">
+<body class="h-screen w-screen bg-Color">
 
     {{-- <div class="left-0 top-0 absolute bg-gradient-to-br from-amber-500 to-neutral-800"></div> --}}
+    <div class="flex flex-col h-full w-full">
+
+        <livewire:navbar />
 
 
-    <h1 class="text-yellow-500">Test<h1>
-
+    </div>
 
 </body>
 </html>
