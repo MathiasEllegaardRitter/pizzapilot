@@ -1,8 +1,8 @@
 <nav class="flex flex-row w-full h-20 items-center justify-between">
     <img wire:click="home" class="ml-10 hover:cursor-pointer" src="{{ asset('storage/icons/PIZZAPILOT.svg') }}" alt="Icon">
     
-    <div class="text-black">
-        <input placeholder="What would you like"/>
+    <div class="text-black w-1/4 rounded-x1">
+        <input class="w-full" placeholder="What would you like"/>
     </div>
 
     <div class="flex flex-row text-orange-400 justify-between space-x-5 mr-10">
