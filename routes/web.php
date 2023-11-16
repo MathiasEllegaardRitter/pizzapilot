@@ -16,6 +16,12 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::view('/', 'index');
 
+Route::view('/message', 'message');
+
+Route::view('/cart', 'cart');
+
+Route::view('/favorites', 'favorites');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

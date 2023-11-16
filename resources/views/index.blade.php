@@ -10,23 +10,12 @@
 <body class="h-screen w-screen bg-Color">
 
     {{-- <div class="left-0 top-0 absolute bg-gradient-to-br from-amber-500 to-neutral-800"></div> --}}
-    <div>
-    @auth
-    <p>Welcome, {{ Auth::user()->name }}!</p>
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
-    @else
-    <p>You are not logged in.</p>
-    <a href="{{ route('login') }}">Login</a>
-    @endauth
+    <div class="flex flex-col h-full w-full">
+
+        <livewire:navbar />
+
+
     </div>
-
-
-
-    <h1 class="text-yellow-500">Test<h1>
-
 
 </body>
 </html>
