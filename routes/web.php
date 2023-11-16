@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\BreakesController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,27 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/breakes', [BreakesController::class, 'readAll']);
-Route::post('/breakes', [BreakesController::class, 'create'])->name('breakes.create');
+Route::view('/', 'index');
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/products', [ProductController::class, 'readAll']);
-Route::post('/products', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products/find', [ProductController::class, 'get'])->name('products.findProduct');
-Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
-Route::post('/products/delete', [ProductController::class, 'delete'])->name('products.delete');
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    Route::post('/login', [AuthenticatedSessionController::class, "store"])
+    ->name("login");
+
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // Your other authenticated routes here
+    
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
+
+
 
 require __DIR__.'/auth.php';
