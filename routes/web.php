@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/breakes', [BreakesController::class, 'readAll']);
 Route::post('/breakes', [BreakesController::class, 'create'])->name('breakes.create');
 
-Route::get('/', [ProductController::class, 'readAll']);
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::get('/products', [ProductController::class, 'readAll']);
 Route::post('/products', [ProductController::class, 'create'])->name('products.create');
