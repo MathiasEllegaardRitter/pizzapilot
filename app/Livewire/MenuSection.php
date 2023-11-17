@@ -5,7 +5,6 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Menu;
 
-
 class MenuSection extends Component
 {
     public function render()
@@ -16,10 +15,7 @@ class MenuSection extends Component
 
         if ($menu != null) 
         {
-        $products = $menu->products;
-        $categories =$menu->products->pluck('categories')->unique();
-        
-        return view('livewire.menu-section')->with('products', $products)->with('categories', $categories);
+            return view('livewire.menu-section')->with('menu', $menu);
         }
 
         return view('livewire.empty-menu-section');

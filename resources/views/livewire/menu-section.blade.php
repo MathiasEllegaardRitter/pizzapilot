@@ -1,12 +1,4 @@
 <div>
-    <ul>
+    <livewire:category-section :menu="$menu">
     
-    @if ($category)
-        
-    @endif
-    
-    @foreach ($categories as $category)
-        <li>$category->name<li>
-    @endforeach
-    </ul>
 </div>
