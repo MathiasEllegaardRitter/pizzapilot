@@ -16,5 +16,11 @@ class Category extends Model
     {
         return $menu->products->pluck('category')->unique()->first();
     }
-    
+
+
+    public function products()
+    {
+    return $this->hasMany(Product::class);
+    }
+
 }

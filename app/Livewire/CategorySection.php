@@ -12,11 +12,10 @@ class CategorySection extends Component
     public Category $mainCategory;
     public $menu;
  
-    public function mount($menu)
+    public function mount($menu, $mainCategory)
     {
         $this->menu = $menu;
-        $category = new Category();
-        $this->mainCategory = $category->getStartCategory($menu);
+        $this->mainCategory = $mainCategory;
     }
 
     public function render()

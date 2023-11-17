@@ -4,24 +4,33 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Category;
-
+use Livewire\Attributes\On;
 
 class ProductSection extends Component
 {
-    public Category $category;
+    public Category $mainCategory;
+    public $products;
 
-    public function mount($category)
+    #[On('mainCategoryUpdated')]
+    public function updateMainCategory($categoryId)
     {
-        $this->$category = $category;
+        $category = new Category();
+        $this->mainCategory = $category::find($categoryId);
+        $this->products = $this->mainCategory->products;
+    }
+
+    public function mount($mainCategory)
+    {
+        $this->mainCategory = $mainCategory;
     }
 
     public function render()
     {
-        dd("test");
-        $category = $this->category;
+        $category = $this->mainCategory;
 
-        $products =  $category->products;
+        $products = $category->products;
+        $this->products = $products;
 
-        return view('livewire.product-section')->with("products", $products);
+        return view('livewire.product-section')->with("products", $this->products);
     }
 }
