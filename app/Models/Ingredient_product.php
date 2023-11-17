@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Ingredient_product extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
 
     public function products(): BelongsTo
     {

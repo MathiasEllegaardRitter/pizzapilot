@@ -11,6 +11,7 @@
         </li>
             
         @endforeach
-
     </ul>
+
+    <livewire:scripts />
 </div>
