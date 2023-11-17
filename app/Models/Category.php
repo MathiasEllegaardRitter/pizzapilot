@@ -10,4 +10,11 @@ class Category extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+
+    public function getStartCategory(Menu $menu)
+    {
+        return $menu->products->pluck('category')->unique()->first();
+    }
+    
 }

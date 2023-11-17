@@ -15,16 +15,15 @@ class CategorySection extends Component
     public function mount($menu)
     {
         $this->menu = $menu;
-        $this->mainCategory = $menu->products->pluck('category')->unique()->first();
+        $category = new Category();
+        $this->mainCategory = $category->getStartCategory($menu);
     }
 
     public function render()
     {
         $menu = $this->menu;
-        
         if ($menu != null) 
         {
-        $products = $menu->products;
         $categories =$menu->products->pluck('category')->unique();
 
         return view('livewire.category-section')->with('categories', $categories)->with("mainCategory", $this->mainCategory);
@@ -39,6 +38,7 @@ class CategorySection extends Component
 
         if ($category) {
             $this->mainCategory = $category;
+            $this->dispatch('mainCategoryUpdated',  $categoryId);
             $this->render();
         }
     }
