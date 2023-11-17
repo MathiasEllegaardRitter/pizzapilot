@@ -16,6 +16,8 @@
 
         <livewire:hero-section />
 
+        <livewire:menu-section />
+
     </div>
 
 </body>
