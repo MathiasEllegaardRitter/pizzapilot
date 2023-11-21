@@ -21,6 +21,6 @@
         <livewire:cart-section />
 
     </div>
-
+    <livewire:scripts />
 </body>
 </html>
