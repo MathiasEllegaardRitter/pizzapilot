@@ -17,20 +17,29 @@ class CartSection extends Component
         if (empty($cart)) {
             $this->cart = [];
         } else {
-            $this->cart = $cart;
+            foreach ($cart as $product) {
+                $existingProduct = $this->findExistingProduct($product->id, $product->name, $product->price);
+        
+                if ($existingProduct) {
+                    $this->cart[] = $existingProduct; // Add product to session
+                }
+            }
         }
     }
 
     public function render()
     {
+        // returns he cart with all the products
         return view('livewire.cart-section')->with('cart', $this->cart);
     }
 
     #[On('addToCart')]
     public function addToCart(Product $product)
     {
+        $existingProduct = $this->findExistingProduct($product->id, $product->name, $product->price);
         // Adds cart to the live component
-        $this->cart[] = $product;
+        $this->cart[] = $existingProduct;
+
         // Then we persist it in a session so it can be used on different pages with the help of the mount function
         session(['cart' => $this->cart]);
     }
@@ -39,4 +48,20 @@ class CartSection extends Component
     {
         $this->cart->remove($product);
     }
+
+    public function removeAll()
+    {
+        $this->cart = [];
+        session(['cart' => []]);
+    }
+
+    private function findExistingProduct($productId, $productName, $productPrice): Product
+    {
+        return Product::where('id', $productId)
+            ->where('name', $productName)
+            ->where('price', $productPrice)
+            ->first();
+    }
+
+
 }
