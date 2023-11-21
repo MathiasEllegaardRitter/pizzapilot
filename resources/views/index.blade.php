@@ -17,8 +17,10 @@
         <livewire:hero-section />
 
         <livewire:menu-section />
+        
+        <livewire:cart-section />
 
     </div>
-
+    <livewire:scripts />
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\Attributes\On;
+use App\Models\Product;
 
 class ProductSection extends Component
 {
@@ -17,6 +18,17 @@ class ProductSection extends Component
         $category = new Category();
         $this->mainCategory = $category::find($categoryId);
         $this->products = $this->mainCategory->products;
+    }
+
+    public function addToCart($productId)
+    {
+        $product = $this->products->find($productId);
+        if($product != null) {
+            $this->dispatch('addToCart',  $product);
+        } else
+        {
+
+        }
     }
 
     public function mount($mainCategory)
