@@ -5,16 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class item_order extends Model
 {
     use HasFactory;
-
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class, 'item_orders');
-    }
-
-
-
-
 }
