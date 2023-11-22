@@ -26,6 +26,9 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+
+Route::view('/register','register')->name('register');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
