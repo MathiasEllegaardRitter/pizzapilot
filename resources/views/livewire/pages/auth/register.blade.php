@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use App\Models\Customer;
 
 new #[Layout('layouts.guest')] class extends Component
 {
@@ -30,9 +31,11 @@ new #[Layout('layouts.guest')] class extends Component
 
         event(new Registered($user = User::create($validated)));
 
+        $customer = Customer::create(['user_id' => $user->id]);
+
         auth()->login($user);
 
-        $this->redirect(RouteServiceProvider::HOME, navigate: true);
+        redirect()->to(session('url.intended', RouteServiceProvider::HOME))->with('navigate', true);
     }
 }; ?>
 
