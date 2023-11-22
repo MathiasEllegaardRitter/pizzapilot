@@ -1,9 +1,11 @@
 <div>
     <h1> Cart-Test </h1>
-    @foreach ($cart as $product)
+    @foreach ($cart as $item)
         <div> 
-            <h4>{{ $product->name }}</h4>
-            <p>Price: ${{ $product->price }}</p>    
+            {{ $item['product_name'] }}
+            {{ $item['product_price'] }}
+            {{ $item['quantity'] }}
+            {{-- Other properties --}} 
         </div> 
     @endforeach
 
