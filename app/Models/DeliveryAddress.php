@@ -9,6 +9,8 @@ class DeliveryAddress extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function customers()
     {
         $this->belongsTo(Customer::class);
