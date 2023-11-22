@@ -87,5 +87,4 @@ class CartSection extends Component
     }
         return false;
     }
-
 }
