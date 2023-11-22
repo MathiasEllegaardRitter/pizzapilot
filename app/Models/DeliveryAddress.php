@@ -11,8 +11,8 @@ class DeliveryAddress extends Model
 
     protected $guarded = [];
 
-    public function customers()
+    public function customer()
     {
-        $this->belongsTo(Customer::class);
+        $this->hasOne(Customer::class);
     }
 }

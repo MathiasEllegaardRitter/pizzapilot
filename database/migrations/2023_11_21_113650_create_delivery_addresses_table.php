@@ -16,9 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('street');
             $table->string('city');
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->integer('postal_code');
-            $table->foreignId('customer_id')->nullable();
+            $table->foreignId('customer_id')->constrained()->nullable();
         });
     }
 

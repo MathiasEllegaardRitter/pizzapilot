@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\DeliveryAddressResource\Pages;
 use App\Filament\Resources\DeliveryAddressResource\RelationManagers;
 use App\Models\DeliveryAddress;
+use App\Models\Customer;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -26,7 +27,8 @@ class DeliveryAddressResource extends Resource
                 Forms\Components\TextInput::make('street')->required(),
                 Forms\Components\TextInput::make('city')->required(),
                 Forms\Components\TextInput::make('postal_code')->required(),
-                Forms\Components\Textarea::make('comment')->required(),
+                Forms\Components\Textarea::make('comment'),
+                Forms\Components\Select::make('customer_id')->options(Customer::all()->pluck('user.name', 'id')),
             ]);
     }
 
@@ -37,7 +39,8 @@ class DeliveryAddressResource extends Resource
                 Tables\Columns\TextColumn::make('street')->searchable(),
                 Tables\Columns\TextColumn::make('city')->searchable(),
                 Tables\Columns\TextColumn::make('postal_code')->searchable(),
-                Tables\Columns\TextColumn::make('comment')->searchable(),
+                Tables\Columns\TextColumn::make('customer.created_at'),
+                // Tables\Columns\TextColumn::make('customer_id.user.name'),
             ])
             ->filters([
                 //
@@ -52,12 +55,12 @@ class DeliveryAddressResource extends Resource
             ]);
     }
     
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+    // public static function getRelations(): array
+    // {
+    //     return [
+    //         //
+    //     ];
+    // }
     
     public static function getPages(): array
     {
