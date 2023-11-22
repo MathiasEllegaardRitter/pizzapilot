@@ -9,6 +9,8 @@ use App\Models\Product;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Ingredient;
+use App\Models\Ingredient_product;
 use App\Models\Menu;
 use App\Models\menu_product;
 
@@ -28,7 +30,7 @@ class DatabaseSeeder extends Seeder
         // Breakes::factory(8)->create();
         // Product::factory(5)->create();
         User::factory()->create();
-
+        
         Category::create([
             'name' => 'Pizza',
             'description' => 'For pizzas',
@@ -38,6 +40,27 @@ class DatabaseSeeder extends Seeder
             'name' => 'Burger',
             'description' => 'For burgers',
         ]);
+
+        Ingredient::create([
+            'name' => 'Onion',
+        ]);
+
+        Ingredient::create([
+            'name' => 'Tomato',
+        ]);
+
+        Ingredient::create([
+            'name' => 'Pepperoni',
+        ]);
+
+        Ingredient::create([
+            'name' => 'Cheese',
+        ]);
+
+        Ingredient::create([
+            'name' => 'Beef',
+        ]);
+
 
         Product::create([
             'name' => 'Cheese pizza',
@@ -71,6 +94,73 @@ class DatabaseSeeder extends Seeder
             'is_active' => 1,
         ]);
 
+        Ingredient_product::create([
+            'ingredient_id' => 2,
+            'quantity' => 10,
+            'product_id' => 1,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 4,
+            'quantity' => 11,
+            'product_id' => 1,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 1,
+            'quantity' => 0.5,
+            'product_id' => 1,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 2,
+            'quantity' => 10,
+            'product_id' => 2,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 4,
+            'quantity' => 11,
+            'product_id' => 2,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 3,
+            'quantity' => 0.5,
+            'product_id' => 2,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 1,
+            'quantity' => 0.5,
+            'product_id' => 2,
+        ]);
+
+        
+        Ingredient_product::create([
+            'ingredient_id' => 1,
+            'quantity' => 10,
+            'product_id' => 3,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 2,
+            'quantity' => 11,
+            'product_id' => 3,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 4,
+            'quantity' => 0.5,
+            'product_id' => 3,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 3,
+        ]);
+
         menu_product::create([
             'menu_id' => 1,
             'product_id' => 1,
@@ -83,6 +173,8 @@ class DatabaseSeeder extends Seeder
             'menu_id' => 1,
             'product_id' => 3,
         ]);
+
+
 
     }
 }
