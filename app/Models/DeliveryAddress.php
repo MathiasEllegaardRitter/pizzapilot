@@ -13,6 +13,6 @@ class DeliveryAddress extends Model
 
     public function customer()
     {
-        $this->hasOne(Customer::class);
+        return $this->belongsTo(Customer::class);
     }
 }

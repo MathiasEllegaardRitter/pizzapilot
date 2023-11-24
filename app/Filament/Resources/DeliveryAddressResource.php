@@ -40,7 +40,7 @@ class DeliveryAddressResource extends Resource
                 Tables\Columns\TextColumn::make('city')->searchable(),
                 Tables\Columns\TextColumn::make('postal_code')->searchable(),
                 Tables\Columns\TextColumn::make('customer.created_at'),
-                // Tables\Columns\TextColumn::make('customer_id.user.name'),
+                Tables\Columns\TextColumn::make('customer.user.name'),
             ])
             ->filters([
                 //

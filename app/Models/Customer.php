@@ -27,8 +27,8 @@ class Customer extends Model
     }
 
     // Customer has one delivery address
-    public function deliveries(): BelongsToMany
+    public function deliveries(): HasMany
     {
-        return $this->belongsToMany(DeliveryAddress::class);
+        return $this->hasMany(DeliveryAddress::class);
     }
 }
