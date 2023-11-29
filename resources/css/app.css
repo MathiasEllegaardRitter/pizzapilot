@@ -6,3 +6,30 @@
 .bg-Color {
     background: linear-gradient(143deg, #E48E20 -94.39%, #232228 52.51%);
 }
+
+.bg-Color-Reverse {
+    background: linear-gradient(143deg, #232228 52.51%, #E48E20 -94.39%);
+}
+
+.cart-background::before {
+    backdrop-filter: blur(50px);
+    z-index: 10;
+}
+
+.bg-orange {
+    background: #E48E20
+}
+
+.cart-background {
+    
+    background: rgba(20, 8, 8, 0.4);
+}
+
+.blur {
+    backdrop-filter: blur(5px)
+;
+}
+
+.fill {
+    fill: rgba(0, 0, 0, 0.40);
+}

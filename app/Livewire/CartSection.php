@@ -42,7 +42,7 @@ class CartSection extends Component
         
         if($existingProductIndex !== false)
         {
-            // Then add one to item to product
+            // Add one item to cart
             $this->cart[$existingProductIndex]['quantity'] += 1;
         } else
         {
@@ -50,6 +50,7 @@ class CartSection extends Component
                 'product_id' => $product->id,
                 'product_name' => $product->name,
                 'product_price' => $product->price,
+                'product_image' => $product->image,
                 'quantity' => 1,
             ];
         }
@@ -57,9 +58,9 @@ class CartSection extends Component
         session(['cart' => $this->cart]);
     }
     
-    public function removeFromCart($product)
+    public function removeFromCart($item)
     {
-        $this->cart->remove($product);
+        unset($this->cart[$item]);
     }
 
     public function removeAll()
