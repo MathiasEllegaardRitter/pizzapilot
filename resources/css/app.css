@@ -6,3 +6,15 @@
 .bg-Color {
     background: linear-gradient(143deg, #E48E20 -94.39%, #232228 52.51%);
 }
+
+.justify-space-around{
+    justify-content: space-around;
+}
+
+.full-height-without-header {
+    height: calc(100vh - 5rem);
+}
+
+.login-width{
+    width: 24rem;
+}
