@@ -62,7 +62,8 @@ class CartSection extends Component
         }
         // Then we persist it in a session so it can be used on different pages with the help of the mount function
         session(['cart' => $this->cart]);
-    }
+        $this->dispatch('hasItemsInCart');
+        }
     
     public function removeFromCart($item)
     {
@@ -77,6 +78,7 @@ class CartSection extends Component
         $this->cart = array_values($this->cart);
 
         session(['cart' => $this->cart]);
+        $this->dispatch('hasItemsInCart');
         }
     }
 
@@ -90,13 +92,11 @@ class CartSection extends Component
         dd("test decrease");
     }
 
-
-
-
     public function removeAll()
     {
         $this->cart = [];
         session(['cart' => []]);
+        $this->dispatch('hasItemsInCart');
     }
 
     private function findExistingProduct($productId, $productName, $productPrice): Product

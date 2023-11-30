@@ -28,17 +28,17 @@ class OrderCreate extends Component
     // Need an queue and async
     public function createOrder()
     {
-        if ($this->items->count() == 0) {
+        if (count($this->items) >= 0) {
         $order = Order::create([
             'status' => StatusEnum::CREATED,
         ]);
-
+        
         foreach ($this->items as $item) {
-            Item::create([
+            $newItem = Item::create([
                 'product_id'=> $item['product_id'],
             ]);
             item_order::create([
-                'product_id'=> $item['product_id'],
+                'item_id'=> $newItem->id,
                 'order_id' => $order->id
             ]);
         }

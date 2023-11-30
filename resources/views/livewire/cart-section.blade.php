@@ -50,7 +50,8 @@
     </div>
 
     <div class="flex flex-row items-center justify-center space-x-2">
-    <button class="bg-orange w-2/4 font-bold text-lg hover:bg-orange-600 text-white font-bold rounded py-2 px-4 rounded" wire:click="removeAll()">Order</button>
+        <livewire:order-create :items="$cart" /> 
+    
     <button class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded self-center" wire:click="removeAll()">Clear</button>
     </div>
 </div>
