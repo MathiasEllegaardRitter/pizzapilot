@@ -6,11 +6,17 @@ use Livewire\Component;
 
 class Navbar extends Component
 {
+   
+
+
+    public function mount()
+    {
+
+    }
+
     public function render()
     {
-        return view('livewire.navbar');
-
-        
+        return view('livewire.navbar'); 
     }
 
     public function home()
@@ -20,7 +26,8 @@ class Navbar extends Component
 
     public function cart()
     {
-        return redirect('/cart');;
+        $result = true;
+        $this->dispatch('showCart', $result);
     }
 
     public function message()

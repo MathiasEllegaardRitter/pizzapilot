@@ -9,7 +9,6 @@ use App\Models\Product;
 class CartSection extends Component
 {
     public $cart;
-   
 
     public function mount()
     {
@@ -22,7 +21,7 @@ class CartSection extends Component
                 $existingProduct = $this->findExistingProduct($item['product_id'], $item['product_name'], $item['product_price']);
                 $existingProductIndexInCart = $this->findExistingProductIndexInCart($item['product_id'], $item['product_name'], $item['product_price']);
                 if (!$existingProduct) {
-                    // If product doesn't exist in the database remove it.
+                    // If product doesn't exist in the database remove it. LETS USE REMOVE CART AND ADD ID INSTEAD
                     unset($this->cart[$existingProductIndexInCart]);
                 }
             }
@@ -31,8 +30,15 @@ class CartSection extends Component
 
     public function render()
     {
+        $this->cart = session('cart');
         // returns he cart with all the products
         return view('livewire.cart-section')->with('cart', $this->cart);
+    }
+
+    public function closeCart()
+    {
+        $result = false;
+        $this->dispatch('showCart', $result);
     }
 
     #[On('addToCart')]
@@ -60,8 +66,32 @@ class CartSection extends Component
     
     public function removeFromCart($item)
     {
-        unset($this->cart[$item]);
+        $itemArray = json_decode($item, true);
+
+        $index = array_search($itemArray['product_id'], array_column($this->cart, 'product_id'));
+
+        if($index !== false)
+        {
+        unset($this->cart[$index]);
+
+        $this->cart = array_values($this->cart);
+
+        session(['cart' => $this->cart]);
+        }
     }
+
+    public function addQuanity()
+    {
+        dd("test add");
+    }
+
+    public function decreaseQuantity()
+    {
+        dd("test decrease");
+    }
+
+
+
 
     public function removeAll()
     {

@@ -24,6 +24,7 @@ class ProductSection extends Component
     {
         $product = $this->products->find($productId);
         if($product != null) {
+            $this->dispatch('showCart',  true);
             $this->dispatch('addToCart',  $product);
         } else
         {
