@@ -11,6 +11,12 @@
 
     </div>
     @if(count($cart) > 0)
+    <div class=" flex flex-row w-full items-center place-content-center border-b-2 p-2 border-slate-600 p-4">
+        <input type="checkbox" class="border-solid border-neutral-300" wire:model.live="delivery">
+        <label class="ml-2"> Delivery? </label>
+        {{-- <label> Test {{ $delivery ? 'True' : 'False' }} </label> --}}
+    </div>
+
     @foreach ($cart as $item)
     @php
     $totalCostForItem = $item['product_price'] * $item['quantity'];
@@ -43,7 +49,7 @@
     @endforeach
     @if ($totalPrice !== 0)
     <div class="flex flex-row justify-between mt-2">
-        <div class="text-slate-400">Total</div>  
+        <div class="text-slate-200">Total</div>  
         <div> <h1 class="text-white">${{$totalPrice}} <h1></div> 
     </div>
     @endif
@@ -64,3 +70,4 @@
 
    
 </div>
+
