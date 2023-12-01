@@ -9,6 +9,7 @@ use App\Models\Product;
 class CartSection extends Component
 {
     public $cart;
+    public $delivery = false;
 
     public function mount()
     {
@@ -33,7 +34,7 @@ class CartSection extends Component
     {
         $this->cart = session('cart');
         // returns he cart with all the products
-        return view('livewire.cart-section')->with('cart', $this->cart);
+        return view('livewire.cart-section')->with('cart', $this->cart)->with('delivery', $this->delivery);
     }
 
     public function closeCart()
@@ -119,4 +120,18 @@ class CartSection extends Component
     }
         return false;
     }
+
+    public function updatedDelivery($value)
+    {
+        // This method will be called when the $delivery property is updated
+
+        if ($value) {
+            $this->delivery =  $value;
+        } else {
+             $this->delivery = false;
+        }
+    }
+
+
+
 }
