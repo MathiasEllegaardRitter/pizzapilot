@@ -9,18 +9,7 @@
 </head>
 <body class="h-screen w-screen bg-Color">
 
-    {{-- <div class="left-0 top-0 absolute bg-gradient-to-br from-amber-500 to-neutral-800"></div> --}}
-    <div class="flex flex-col h-full w-full">
-
-        <livewire:navbar />
-
-        <livewire:hero-section />
-
-        <livewire:menu-section />
-        
-        <livewire:cart-section />
-
-    </div>
-    <livewire:scripts />
+        <livewire:frontpage-section />
 </body>
+<livewire:scripts />
 </html>

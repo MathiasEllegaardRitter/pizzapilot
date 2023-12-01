@@ -8,7 +8,11 @@
     <div class="flex flex-row text-orange-400 justify-between space-x-5 mr-10">
 
     <div wire:click="cart" class="hover:cursor-pointer flex flex-col items-center">
-        <img class="w-8 h-8" src="{{ asset('storage/icons/Shopping Cart.svg') }}" alt="Icon">
+        @if($hasItemsInCart)
+        <img class="w-4 h-4 z-0 absolute self-end -mt-2" src="{{ asset('storage/icons/basket.png') }}" alt="Icon">
+        @endif
+        
+        <img class="w-8 h-8 z-1" src="{{ asset('storage/icons/Shopping Cart.svg') }}" alt="Icon">
         <div>
         Cart
         </div>
