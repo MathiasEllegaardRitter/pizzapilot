@@ -10,7 +10,7 @@
         <h1> Shopping Cart </h1>
 
     </div>
-    
+    @if(count($cart) > 0)
     @foreach ($cart as $item)
     @php
     $totalCostForItem = $item['product_price'] * $item['quantity'];
@@ -54,4 +54,13 @@
     
     <button class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded self-center" wire:click="removeAll()">Clear</button>
     </div>
+
+    @else
+    <div class="flex flex-col text-lg w-full h-full place-content-center">
+        <img class="w-8 h-8 self-center" src="{{ asset('storage/icons/Shopping Cart.svg') }}">
+        <label class="text-white self-center mt-2"> Shopping cart is empty </label> 
+    </div>
+    @endif
+
+   
 </div>
