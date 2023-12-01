@@ -29,6 +29,5 @@ class FrontpageSection extends Component
     public function showCart($result)
     {
         $this->showCart = $result;
-        $this->render();
     }
 }
