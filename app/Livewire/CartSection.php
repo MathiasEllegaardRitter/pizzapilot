@@ -23,6 +23,7 @@ class CartSection extends Component
                 if (!$existingProduct) {
                     // If product doesn't exist in the database remove it. LETS USE REMOVE CART AND ADD ID INSTEAD
                     unset($this->cart[$existingProductIndexInCart]);
+                    session(['cart' => $this->cart]);
                 }
             }
         }
