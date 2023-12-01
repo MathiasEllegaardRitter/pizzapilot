@@ -25,7 +25,6 @@
     </form>
 </div>
 
-
 @else
 <h1>No product was found<h1>
 @endif
