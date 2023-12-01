@@ -9,7 +9,7 @@ use App\Models\Product;
 class CartSection extends Component
 {
     public $cart;
-    public $delivery = false;
+    public $delivery;
 
     public function mount()
     {
@@ -126,9 +126,9 @@ class CartSection extends Component
         // This method will be called when the $delivery property is updated
 
         if ($value) {
-            $this->delivery =  $value;
+            $this->delivery =  true;
         } else {
-             $this->delivery = false;
+            $this->delivery = false;
         }
     }
 

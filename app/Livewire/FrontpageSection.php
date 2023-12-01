@@ -12,6 +12,10 @@ class FrontpageSection extends Component
 
     public $showFavorites;
 
+    public $showCheckout;
+
+    public $delivery;
+
     public function mount()
     {
         $this->showCart = false;
@@ -22,12 +26,18 @@ class FrontpageSection extends Component
 
     public function render()
     {
-        return view('livewire.frontpage-section')->with('showCart', $this->showCart);
+        return view('livewire.frontpage-section')->with('showCart', $this->showCart)->with('showCheckout', $this->showCheckout)->with('delivery', $this->delivery);
     }
 
     #[On('showCart')]
     public function showCart($result)
     {
         $this->showCart = $result;
+    }
+    #[On('showCheckout')]
+    public function showCheckout($result, $delivery)
+    {
+        $this->delivery = $delivery;
+        $this->showCheckout = $result;
     }
 }
