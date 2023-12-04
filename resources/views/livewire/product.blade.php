@@ -1,7 +1,7 @@
 <article class="w-full mx-auto flex flex-row">
     <section class="w-3/6">
         <h1 class="ml-24 mb-12 py-2 pt-5 text-white font-inter text-4xl">The classic pizza pepperoni with cheese.</h1>
-        <p class="ml-24 mb-10 py-2 pt-5 text-white font-inter font-thin text-4xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. U</p>
+        <p class="ml-24 w-4/6 mb-10 py-2 pt-5 text-white font-inter font-thin text-4xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. U</p>
 
         <h2 class="ml-24 mb-6 text-white font-inter text-3xl">Ingredients</h2>
         <ul class="ml-24 w-1/2 mb-16 grid grid-cols-3 gap-4 grid place-items-center justify-items-start">
@@ -33,6 +33,6 @@
     </section>
 
     <section class="w-3/6">
-        {{-- <img class="max-w-full hover:cursor-pointer" src="{{ asset('storage/' . $product->image) }}" alt="Icon"> --}}
+        <img class="max-w-full" src="{{ asset('storage/4Cg4nDpq3sT4CXQZrDzull9IpLvbhd-metacGl6emFfUE5HNDM5OTEucG5n-.png')}}" alt="Icon">
     </section>
 </article>
