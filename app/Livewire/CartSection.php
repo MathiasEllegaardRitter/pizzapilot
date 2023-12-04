@@ -130,6 +130,7 @@ class CartSection extends Component
         } else {
             $this->delivery = false;
         }
+        $this->dispatch('deliveryUpdated', $this->delivery);
     }
 
 

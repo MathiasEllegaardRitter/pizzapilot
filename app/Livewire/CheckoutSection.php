@@ -9,6 +9,11 @@ class CheckoutSection extends Component
 
     public $delivery;
 
+
+    public function mount($delivery)
+    {
+        $this->$delivery = $delivery;
+    }
     public function render()
     {
         return view('livewire.checkout-section')->with('delivery', $this->delivery);

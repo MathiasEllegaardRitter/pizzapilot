@@ -15,14 +15,9 @@ class OrderCreate extends Component
     public $items;
     public $errorMessage;
 
-    public $delivery = false;
-
-
     public function mount($items, $delivery)
     {
         $this->items = $items;
-        dd($delivery);
-        $this->delivery = $delivery;
     }
 
     public function render()
@@ -49,7 +44,6 @@ class OrderCreate extends Component
         // }   else {
         //     $this->errorMessage = 'need items';
         // }
-        dd($this->delivery);
-        $this->dispatch('showCheckout', true, $this->delivery);
+        $this->dispatch('showCheckout', true);
     }
 }

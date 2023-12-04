@@ -34,10 +34,24 @@ class FrontpageSection extends Component
     {
         $this->showCart = $result;
     }
+
     #[On('showCheckout')]
-    public function showCheckout($result, $delivery)
+    public function showCheckout($result)
     {
-        $this->delivery = $delivery;
         $this->showCheckout = $result;
     }
+
+    #[On('deliveryUpdated')]
+    public function deliveryUpdated($value)
+    {
+        // This method will be called when the $delivery property is updated
+
+        if ($value) {
+            $this->delivery =  true;
+        } else {
+            $this->delivery = false;
+        }
+    }
+
+
 }

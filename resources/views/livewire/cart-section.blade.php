@@ -10,7 +10,7 @@
         <h1> Shopping Cart </h1>
 
     </div>
-    @if(count($cart) > 0)
+    @if(is_array($cart) && count($cart) > 0)
     <div class=" flex flex-row w-full items-center place-content-center border-b-2 p-2 border-slate-600 p-4">
         <input type="checkbox" class="border-solid border-neutral-300" wire:model.live="delivery">
         <label class="ml-2"> Delivery? </label>
@@ -31,7 +31,7 @@
                     {{ $item['product_name'] }}
                      </div>
                 </div>
-            
+                
 
                 <div class="flex flex-row space-x-4 items-center">
                 <div>
