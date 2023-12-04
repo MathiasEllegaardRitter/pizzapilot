@@ -7,9 +7,12 @@
     <livewire:menu-section />
 
     @if ($showCart == true)
-    <livewire:cart-section/> 
+    <livewire:cart-section :delivery="$delivery"/> 
     @endif
-       
+
+    @if ($showCheckout == true)
+    <livewire:checkout-section :delivery="$delivery" /> 
+    @endif       
 
     <livewire:scripts />
     </div>

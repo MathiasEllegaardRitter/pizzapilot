@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-Checkout
+{
+    --tw-bg-opacity: 1;
+    background-color: rgb(28 28 28/var(--tw-bg-opacity));
+}
+
+.bg-esc
+{
+    --tw-bg-opacity: 1;
+    background-color: rgb(40 40 44/var(--tw-bg-opacity));
+}
+
+.border-esc
+{
+    --tw-border-opacity: 1;
+    border-color: rgb(52 52 58/var(--tw-border-opacity));
+}
 
 .bg-Color {
     background: linear-gradient(143deg, #E48E20 -94.39%, #232228 52.51%);

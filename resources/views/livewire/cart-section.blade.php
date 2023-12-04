@@ -10,11 +10,11 @@
         <h1> Shopping Cart </h1>
 
     </div>
-    @if(count($cart) > 0)
+    @if(is_array($cart) && count($cart) > 0)
     <div class=" flex flex-row w-full items-center place-content-center border-b-2 p-2 border-slate-600 p-4">
         <input type="checkbox" class="border-solid border-neutral-300" wire:model.live="delivery">
         <label class="ml-2"> Delivery? </label>
-        {{-- <label> Test {{ $delivery ? 'True' : 'False' }} </label> --}}
+        <label> Test {{ $delivery ? 'True' : 'False' }} </label>
     </div>
 
     @foreach ($cart as $item)
@@ -31,7 +31,7 @@
                     {{ $item['product_name'] }}
                      </div>
                 </div>
-            
+                
 
                 <div class="flex flex-row space-x-4 items-center">
                 <div>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="flex flex-row items-center justify-center space-x-2">
-        <livewire:order-create :items="$cart" /> 
+        <livewire:order-create :items="$cart" :delivery="$delivery"/> 
     
     <button class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded self-center" wire:click="removeAll()">Clear</button>
     </div>
