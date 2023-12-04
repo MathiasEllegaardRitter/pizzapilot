@@ -130,6 +130,7 @@ class CartSection extends Component
         } else {
             $this->delivery = false;
         }
+        // Dispatch delivery to frontpage-section
         $this->dispatch('deliveryUpdated', $this->delivery);
     }
 

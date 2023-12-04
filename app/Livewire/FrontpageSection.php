@@ -42,11 +42,11 @@ class FrontpageSection extends Component
     }
 
     #[On('deliveryUpdated')]
-    public function deliveryUpdated($value)
+    public function deliveryUpdated($delivery)
     {
-        // This method will be called when the $delivery property is updated
-
-        if ($value) {
+        // This is listening for a deliveryUpdated from child component cart-section
+        
+        if ($delivery) {
             $this->delivery =  true;
         } else {
             $this->delivery = false;
