@@ -13,6 +13,10 @@ use App\Models\Ingredient;
 use App\Models\Ingredient_product;
 use App\Models\Menu;
 use App\Models\menu_product;
+use App\Models\Order;
+use App\Models\item_order;
+use App\Models\Item;
+use App\Models\Customer;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,6 +34,11 @@ class DatabaseSeeder extends Seeder
         // Breakes::factory(8)->create();
         // Product::factory(5)->create();
         User::factory()->create();
+        
+        Customer::create([
+            'user_id'=> 1,
+            'order_id' => 1,
+        ]);
         
         Category::create([
             'name' => 'Pizza',
@@ -136,7 +145,6 @@ class DatabaseSeeder extends Seeder
             'product_id' => 2,
         ]);
 
-        
         Ingredient_product::create([
             'ingredient_id' => 1,
             'quantity' => 10,
@@ -173,6 +181,50 @@ class DatabaseSeeder extends Seeder
             'menu_id' => 1,
             'product_id' => 3,
         ]);
+        
+        item::create([
+            'amount' => 1,
+            'product_id' => 1,
+        ]);
+        item::create([
+            'amount' => 1,
+            'product_id' => 2,
+        ]);
+        item::create([
+            'amount' => 1,
+            'product_id' => 3,
+        ]);
+        Order::create([
+            'customer_id' => 1,
+            'status' => 'pending',
+            'total_price' => 39.98,
+        ]);
+        Order::create([
+            'customer_id' => 1,
+            'status' => 'pending',
+            'total_price' => 39.98,
+        ]);
+
+        item_order::create([
+            'quantity' => 1,
+            'order_id' => 2,
+            'item_id' => 1,
+        ]);
+    
+        item_order::create([
+            'quantity' => 2,
+            'order_id' => 1,
+            'item_id' => 2,
+        ]);
+    
+        item_order::create([
+            'quantity' => 1,
+            'order_id' => 1,
+            'item_id' => 3,
+        ]);
+
+
+    
 
 
 
