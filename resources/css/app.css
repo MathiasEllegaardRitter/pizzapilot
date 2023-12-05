@@ -62,3 +62,49 @@
 .fill {
     fill: rgba(0, 0, 0, 0.40);
 }
+
+.plane{
+    position: absolute;
+    height: max-content;
+    width: max-content;
+    animation: fly-in 1s forwards, rumble 0.5s infinite linear 1s;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+ .plane::before
+{
+   display: block;
+   position: absolute;
+   width: 10%;
+   height: 10%;
+   transform: translate(-0%, -0%);
+   left: 0%;
+   top: 0%;
+}
+
+
+
+@keyframes rumble {
+    0% { transform: translate(-50%, -50%) rotate(0deg); -webkit-transform: translate(-50%, -50%) rotate(0deg); -moz-transform: translate(-50%, -50%) rotate(0deg); -ms-transform: translate(-50%, -50%) rotate(0deg); -o-transform: translate(-50%, -50%) rotate(0deg); }
+    20% { transform:translate(-50%, -50%) rotate(-1deg); -webkit-transform:translate(-50%, -50%) rotate(-1deg); -moz-transform:translate(-50%, -50%) rotate(-1deg); -ms-transform:translate(-50%, -50%) rotate(-1deg); -o-transform:translate(-50%, -50%) rotate(-1deg); }
+    40% { transform:translate(-50%, -50%) rotate(1deg); -webkit-transform:translate(-50%, -50%) rotate(1deg); -moz-transform:translate(-50%, -50%) rotate(1deg); -ms-transform:translate(-50%, -50%) rotate(1deg); -o-transform:translate(-50%, -50%) rotate(1deg); }
+    60% { transform:translate(-50%, -50%) rotate(0deg); -webkit-transform:translate(-50%, -50%) rotate(0deg); -moz-transform:translate(-50%, -50%) rotate(0deg); -ms-transform:translate(-50%, -50%) rotate(0deg); -o-transform:translate(-50%, -50%) rotate(0deg); }
+    80% { transform:translate(-50%, -50%) rotate(1deg); -webkit-transform:translate(-50%, -50%) rotate(1deg); -moz-transform:translate(-50%, -50%) rotate(1deg); -ms-transform:translate(-50%, -50%) rotate(1deg); -o-transform:translate(-50%, -50%) rotate(1deg); } 
+    100% { transform:translate(-50%, -50%) rotate(-1deg); -webkit-transform:translate(-50%, -50%) rotate(-1deg); -moz-transform:translate(-50%, -50%) rotate(-1deg); -ms-transform:translate(-50%, -50%) rotate(-1deg); -o-transform:translate(-50%, -50%) rotate(-1deg); } 
+}
+
+
+@keyframes fly-in {
+    0% {
+        left: 0%;
+        top: 0%;
+        opacity: 0;
+    }
+    100%{
+        left: 50%;
+        top: 50%;
+        opacity: 1;
+    }
+ }
