@@ -37,6 +37,7 @@ class CartSection extends Component
         return view('livewire.cart-section')->with('cart', $this->cart)->with('delivery', $this->delivery);
     }
 
+    #[On('closeCart')]
     public function closeCart()
     {
         $result = false;

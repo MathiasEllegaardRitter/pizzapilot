@@ -45,13 +45,11 @@ class FrontpageSection extends Component
     public function deliveryUpdated($delivery)
     {
         // This is listening for a deliveryUpdated from child component cart-section
-        
+
         if ($delivery) {
             $this->delivery =  true;
         } else {
             $this->delivery = false;
         }
     }
-
-
 }
