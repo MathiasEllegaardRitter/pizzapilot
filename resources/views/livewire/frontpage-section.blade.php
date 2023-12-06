@@ -1,4 +1,4 @@
-<div class="flex flex-row h-full w-full">
+<div class="flex flex-row w-full">
     <div class="flex flex-col w-full">
     <livewire:navbar />
 
