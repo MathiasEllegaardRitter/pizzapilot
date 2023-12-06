@@ -1,4 +1,4 @@
-<div class="absolute inset-0 mx-auto my-auto h-full w-full bg-Color">
+<div class="absolute inset-0 mx-auto my-auto h-full w-full bg-Color z-10">
     <div class="flex flex-row items-center ">
         <img wire:click="closeCheckout" class="h-5 w-5 red-400 m-4 hover:cursor-pointer" src="{{ asset('storage/icons/cross 1.svg') }}" alt="Icon">
         <div class="bg-esc rounded-md w-12 text-center text-sm text-white border-esc border-2">
