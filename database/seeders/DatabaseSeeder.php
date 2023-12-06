@@ -49,6 +49,31 @@ class DatabaseSeeder extends Seeder
             'name' => 'Burger',
             'description' => 'For burgers',
         ]);
+        Category::create([
+            'name' => 'Durum',
+            'description' => 'For durums',
+        ]);
+
+        Category::create([
+            'name' => 'UFO',
+            'description' => 'For UFOs',
+        ]);
+
+
+        Category::create([
+            'name' => 'Pita',
+            'description' => 'For Pitas',
+        ]);
+
+        Category::create([
+            'name' => 'Drinks',
+            'description' => 'For drinks',
+        ]);
+
+        Category::create([
+            'name' => 'Sides',
+            'description' => 'For sides',
+        ]);
 
         Ingredient::create([
             'name' => 'Onion',
@@ -96,6 +121,105 @@ class DatabaseSeeder extends Seeder
             'price' => 10,
             'category_id' => 2,
             'image' => 'vrzsYN4VEcWcVgpOSLqXJq8vFxEI44-metaYnVyZ2VyLndlYnA=-.webp',
+        ]);
+        
+        Product::create([
+            'name' => 'Meat Durum',
+            'description' => 'A very good cheese Durum',
+            'instructions' => 'A very good meat Durum',
+            'price' => 69,
+            'category_id' => 3,
+            'image' => 'vrzsYN4VEcWcVgpOSLqXJq8vFxEI44-metaYnVyZ2VyLndlYnA=-.webp',
+        ]);
+
+        Product::create([
+            'name' => 'Meat UFO',
+            'description' => 'A very good cheese UFO',
+            'instructions' => 'A very good meat UFO',
+            'price' => 20,
+            'category_id' => 4,
+            'image' => 'vrzsYN4VEcWcVgpOSLqXJq8vFxEI44-metaYnVyZ2VyLndlYnA=-.webp',
+        ]);
+
+        Product::create([
+            'name' => 'Meat Pita',
+            'description' => 'A very good cheese pita',
+            'instructions' => 'A very good meat pita',
+            'price' => 0.99,
+            'category_id' => 5,
+            'image' => 'vrzsYN4VEcWcVgpOSLqXJq8vFxEI44-metaYnVyZ2VyLndlYnA=-.webp',
+        ]);
+
+        Product::create([
+            'name' => 'Tea',
+            'description' => 'A very good cheese tea',
+            'instructions' => 'A very good meat tea',
+            'price' => 0.99,
+            'category_id' => 6,
+            'image' => 'vrzsYN4VEcWcVgpOSLqXJq8vFxEI44-metaYnVyZ2VyLndlYnA=-.webp',
+        ]);
+
+        Product::create([
+            'name' => 'Fries',
+            'description' => 'A very good fries',
+            'instructions' => 'A very good meat fries',
+            'price' => 2.99,
+            'category_id' => 7,
+            'image' => 'vrzsYN4VEcWcVgpOSLqXJq8vFxEI44-metaYnVyZ2VyLndlYnA=-.webp',
+        ]);
+
+        Product::create([
+            'name' => 'Cheese vegan pizza',
+            'description' => 'Description for Product 1',
+            'instructions' => 'Instructions for Product 1',
+            'price' => 19.99,
+            'category_id' => 1,
+            'image' => '4Cg4nDpq3sT4CXQZrDzull9IpLvbhd-metacGl6emFfUE5HNDM5OTEucG5n-.png',
+        ]);
+
+        Product::create([
+            'name' => 'Meat lover Pizza',
+            'description' => 'Description for Product 1',
+            'instructions' => 'Instructions for Product 1',
+            'price' => 10.99,
+            'category_id' => 1,
+            'image' => '4Cg4nDpq3sT4CXQZrDzull9IpLvbhd-metacGl6emFfUE5HNDM5OTEucG5n-.png',
+        ]);
+
+        Product::create([
+            'name' => 'Super cheese vegan pizza',
+            'description' => 'Description for Product 1',
+            'instructions' => 'Instructions for Product 1',
+            'price' => 19.99,
+            'category_id' => 1,
+            'image' => '4Cg4nDpq3sT4CXQZrDzull9IpLvbhd-metacGl6emFfUE5HNDM5OTEucG5n-.png',
+        ]);
+
+        Product::create([
+            'name' => 'Super Meat lover Pizza',
+            'description' => 'Description for Product 1',
+            'instructions' => 'Instructions for Product 1',
+            'price' => 10.99,
+            'category_id' => 1,
+            'image' => '4Cg4nDpq3sT4CXQZrDzull9IpLvbhd-metacGl6emFfUE5HNDM5OTEucG5n-.png',
+        ]);
+
+        Product::create([
+            'name' => 'Mega super cheese vegan pizza',
+            'description' => 'Description for Product 1',
+            'instructions' => 'Instructions for Product 1',
+            'price' => 19.99,
+            'category_id' => 1,
+            'image' => '4Cg4nDpq3sT4CXQZrDzull9IpLvbhd-metacGl6emFfUE5HNDM5OTEucG5n-.png',
+        ]);
+
+        Product::create([
+            'name' => 'Mega super Meat lover Pizza',
+            'description' => 'Description for Product 1',
+            'instructions' => 'Instructions for Product 1',
+            'price' => 10.99,
+            'category_id' => 1,
+            'image' => '4Cg4nDpq3sT4CXQZrDzull9IpLvbhd-metacGl6emFfUE5HNDM5OTEucG5n-.png',
         ]);
 
         Menu::create([
@@ -169,6 +293,66 @@ class DatabaseSeeder extends Seeder
             'product_id' => 3,
         ]);
 
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 4,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 5,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 6,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 7,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 8,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 9,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 10,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 11,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 12,
+        ]);
+
+        Ingredient_product::create([
+            'ingredient_id' => 5,
+            'quantity' => 0.5,
+            'product_id' => 13,
+        ]);
+
         menu_product::create([
             'menu_id' => 1,
             'product_id' => 1,
@@ -181,6 +365,49 @@ class DatabaseSeeder extends Seeder
             'menu_id' => 1,
             'product_id' => 3,
         ]);
+
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 4,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 5,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 6,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 7,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 8,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 9,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 10,
+        ]);
+
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 11,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 12,
+        ]);
+        menu_product::create([
+            'menu_id' => 1,
+            'product_id' => 13,
+        ]);
+
         
         item::create([
             'amount' => 1,
