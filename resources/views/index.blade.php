@@ -8,9 +8,9 @@
     @vite('resources/css/app.css')
     @vite('resources/js/custom.js')
 </head>
-<body class="h-screen w-screen bg-Color">
-
+<body class="min-h-screen h-full w-full bg-Color">
         <livewire:frontpage-section />
+
 </body>
 <livewire:scripts />
 </html>

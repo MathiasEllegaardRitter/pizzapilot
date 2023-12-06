@@ -1,21 +1,25 @@
 @php $totalPrice = 0; @endphp
 
 
-
-<div class="flex flex-col justify-between absolute top-0 right-0 p-4 bg text-white w-1/4 h-full z-10 rounded-lg p-4 cart-background">
-
+<div class="flex flex-col justify-between {{ ($summary ?? false) ? '' : 'absolute top-0 right-0' }}  p-4 bg text-white w-1/4 h-full z-10 rounded-lg p-4 cart-background">
+    @if ($summary == false)
     <img wire:click="closeCart" class="absolute top-0 right-0 h-5 w-5 red-400 m-4 hover:cursor-pointer" src="{{ asset('storage/icons/cross 1.svg') }}" alt="Icon">
     <div>
     <div class="w-full justify-center border-b-2 border-slate-600 p-4 text-lg font-bold">
         <h1> Shopping Cart </h1>
 
     </div>
+    @endif
+
     @if(is_array($cart) && count($cart) > 0)
+    @if ($summary == false)
     <div class=" flex flex-row w-full items-center place-content-center border-b-2 p-2 border-slate-600 p-4">
         <input type="checkbox" class="border-solid border-neutral-300" wire:model.live="delivery">
         <label class="ml-2"> Delivery? </label>
         <label> Test {{ $delivery ? 'True' : 'False' }} </label>
     </div>
+    @endif
+    
 
     @foreach ($cart as $item)
     @php
@@ -56,10 +60,14 @@
         @endif
     </div>
 
+
+    @if ($summary == false)
     <div class="flex flex-row items-center justify-evenly">
+
         <livewire:order-create :items="$cart" :delivery="$delivery"/> 
         <button class="bg-red-700 hover:text-black text-white text-lg 2xl:py-3 py-1.5 2xl:px-8 px-4 rounded-lg self-center" wire:click="removeAll()">Clear</button>
     </div>
+    @endif
 
     @else
         <div class="flex flex-col text-lg w-full h-full place-content-center">
