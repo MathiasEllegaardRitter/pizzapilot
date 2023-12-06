@@ -1,4 +1,4 @@
-<nav class="flex flex-row w-full h-20 items-center justify-between">
+<nav class="flex flex-row w-full h-20 items-center justify-between p-3">
     <img wire:click="home" class="ml-10 hover:cursor-pointer" src="{{ asset('storage/icons/PIZZAPILOT.svg') }}" alt="Icon">
     
     <div class="text-black w-1/4 rounded-x1">
