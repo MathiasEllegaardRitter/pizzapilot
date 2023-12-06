@@ -26,54 +26,55 @@
     $totalCostForItem = $item['product_price'] * $item['quantity'];
     $totalPrice += $totalCostForItem;
     @endphp
-            <div class="flex flex-row justify-between border-b-2 p-2 border-slate-600 p-4">
-                <div class="flex flex-row items-center space-x-2"> 
+            <div class="flex flex-row justify-between border-b-2 p-4 border-slate-600">
+                <div class="flex flex-col items-center space-x-2"> 
                     <div>
-                    <img class="w-12 h-12 rounded-lg" src="{{ asset('storage/'. $item['product_image']) }}" alt="Product Image">
+                        <img class="w-12 h-12 rounded-lg" src="{{ asset('storage/'. $item['product_image']) }}" alt="Product Image">
                     </div>
                     <div>
-                    {{ $item['product_name'] }}
-                     </div>
+                        {{ $item['product_name'] }}
+                    </div>
                 </div>
                 
 
                 <div class="flex flex-row space-x-4 items-center">
-                <div>
-                    {{ $item['quantity'] }}
-                </div>
-                <div class="flex flex-col items-center p-4">
-                ${{ $item['product_price'] * $item['quantity'] }}
-                <label class="text-red-600 hover:cursor-pointer" wire:click="removeFromCart('{{ json_encode($item) }}')"> Remove</label>
-                </div>
-
+                    <div class="flex flex-row">
+                        <button class="bg-white 2xl:px-3 2xl:py-1 px-1.5 bg-white cursor-pointer hover:text-orange-400 font-bold text-black rounded mr-2" wire:click="decrement">-</button>
+                        {{ $item['quantity'] }}
+                        <button class="bg-white 2xl:px-3 2xl:py-1 px-1.5 bg-white cursor-pointer hover:text-orange-400 font-bold text-black rounded ml-2" wire:click="increment">+</button>
+                    </div>
+                    <div class="flex flex-col items-center p-4">
+                        ${{ $item['product_price'] * $item['quantity'] }}
+                        <label class="text-red-700 hover:cursor-pointer" wire:click="removeFromCart('{{ json_encode($item) }}')"> Remove</label>
+                    </div>
                 </div>
 
                 {{-- Other properties --}} 
             </div>
     @endforeach
-    @if ($totalPrice !== 0)
-    <div class="flex flex-row justify-between mt-2">
-        <div class="text-slate-200">Total</div>  
-        <div> <h1 class="text-white">${{$totalPrice}} <h1></div> 
-    </div>
-    @endif
+        @if ($totalPrice !== 0)
+            <div class="flex flex-row justify-between mt-2">
+                <div class="text-slate-200">Total</div>  
+                <div> <h1 class="text-white">${{$totalPrice}} <h1></div> 
+            </div>
+        @endif
     </div>
 
+
     @if ($summary == false)
-    <div class="flex flex-row items-center justify-center space-x-2">
+    <div class="flex flex-row items-center justify-evenly">
+
         <livewire:order-create :items="$cart" :delivery="$delivery"/> 
-    
-    <button class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded self-center" wire:click="removeAll()">Clear</button>
+        <button class="bg-red-700 hover:text-black text-white text-lg 2xl:py-3 py-1.5 2xl:px-8 px-4 rounded-lg self-center" wire:click="removeAll()">Clear</button>
     </div>
     @endif
 
     @else
-    <div class="flex flex-col text-lg w-full h-full place-content-center">
-        <img class="w-8 h-8 self-center" src="{{ asset('storage/icons/Shopping Cart.svg') }}">
-        <label class="text-white self-center mt-2"> Shopping cart is empty </label> 
-    </div>
+        <div class="flex flex-col text-lg w-full h-full place-content-center">
+            <img class="w-8 h-8 self-center" src="{{ asset('storage/icons/Shopping Cart.svg') }}">
+            <label class="text-white self-center mt-2"> Shopping cart is empty </label> 
+        </div>
     @endif
-
    
 </div>
 
