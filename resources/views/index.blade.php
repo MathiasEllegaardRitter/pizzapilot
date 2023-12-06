@@ -10,6 +10,7 @@
 </head>
 <body class="min-h-screen h-full w-full bg-Color">
         <livewire:frontpage-section />
+
 </body>
 <livewire:scripts />
 </html>
