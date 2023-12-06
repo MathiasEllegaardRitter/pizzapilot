@@ -93,11 +93,11 @@
    top: 0%;
 }
 
-/* @media (min-width: 1536px) {
+@media (min-width: 2400px) {
     .plane {
         margin-top: -12svh;
     }
-} */
+}
 
 @keyframes rumble {
     0% { transform: translate(-50%, -50%) rotate(0deg); -webkit-transform: translate(-50%, -50%) rotate(0deg); -moz-transform: translate(-50%, -50%) rotate(0deg); -ms-transform: translate(-50%, -50%) rotate(0deg); -o-transform: translate(-50%, -50%) rotate(0deg); }
