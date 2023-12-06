@@ -11,6 +11,8 @@ class CartSection extends Component
     public $cart;
     public $delivery;
 
+    public $summary;
+
     public function mount()
     {
         $this->cart = session('cart');
