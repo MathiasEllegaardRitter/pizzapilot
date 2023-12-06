@@ -16,18 +16,31 @@ class FrontpageSection extends Component
 
     public $delivery;
 
+    public $showProduct;
+
+    public $currentProductId;
+
     public function mount()
     {
         $this->showCart = false;
         $this->showMessage = false;
         $this->showFavorites = false;
+        $this->showProduct = false;
+        $this->currentProductId = null;
     }
-
 
     public function render()
     {
-        return view('livewire.frontpage-section')->with('showCart', $this->showCart)->with('showCheckout', $this->showCheckout)->with('delivery', $this->delivery);
+        return view('livewire.frontpage-section')->with('showCart', $this->showCart)->with('showCheckout', $this->showCheckout)->with('delivery', $this->delivery)->with('showProduct', $this->showProduct)->with('productId', $this->currentProductId);
     }
+
+    #[On('clickProduct')]
+    public function setCurrentProductId($productId)
+    {
+        $this->currentProductId = $productId;
+        $this->showProduct = true;
+    }
+
 
     #[On('showCart')]
     public function showCart($result)

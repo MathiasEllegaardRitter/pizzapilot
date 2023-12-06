@@ -3,7 +3,9 @@
     @foreach ($products as $product)
         <div class="flex flex-col section-card-width p-4">
 
-            <img class="w-24 h-24 hover:cursor-pointer m-auto" src="{{ asset('storage/' . $product->image) }}" alt="Icon">
+        
+        <img wire:click="clickProduct({{ $product->id }})" class="w-24 h-24 hover:cursor-pointer m-auto" src="{{ asset('storage/' . $product->image) }}" alt="Icon">
+
 
             <h1 class="text-lg font-bold mt-2">{{$product->name}}</h1>
 
