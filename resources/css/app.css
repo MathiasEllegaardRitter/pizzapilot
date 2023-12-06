@@ -84,6 +84,12 @@
    top: 0%;
 }
 
+@media (min-width: 1536px) {
+    .plane {
+        margin-top: -12svh;
+    }
+}
+
 
 
 @keyframes rumble {

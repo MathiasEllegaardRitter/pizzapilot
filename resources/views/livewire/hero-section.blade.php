@@ -8,7 +8,7 @@
 <img class="plane" src="{{ asset('storage/icons/mascot.svg') }}" alt="Icon">
 </div>
 
-<div class="text-white w-1/3 text-7xl text-stone-400 font-bold">
+<div class="w-1/3 text-7xl text-stone-400 font-bold">
     Better pizza!
 </div>
 
