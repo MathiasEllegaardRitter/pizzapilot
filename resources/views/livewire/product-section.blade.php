@@ -4,7 +4,7 @@
 
         <div class="flex flex-col">
         
-        <img class="w-24 h-24 hover:cursor-pointer" src="{{ asset('storage/' . $product->image) }}" alt="Icon">
+        <img wire:click="clickProduct({{ $product->id }})" class="w-24 h-24 hover:cursor-pointer" src="{{ asset('storage/' . $product->image) }}" alt="Icon">
 
         <h1>{{$product->name}}</h1>
         <h1>{{$product->id}}</h1>

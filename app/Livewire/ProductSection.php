@@ -12,6 +12,11 @@ class ProductSection extends Component
     public Category $mainCategory;
     public $products;
 
+    public function clickProduct($productId)
+    {
+        $this->dispatch('clickProduct', $productId);
+    }
+
     #[On('mainCategoryUpdated')]
     public function updateMainCategory($categoryId)
     {
