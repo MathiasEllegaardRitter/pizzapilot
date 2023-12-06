@@ -65,7 +65,7 @@ class CartSection extends Component
         // Then we persist it in a session so it can be used on different pages with the help of the mount function
         session(['cart' => $this->cart]);
         $this->dispatch('hasItemsInCart');
-        }
+    }
     
     public function removeFromCart($item)
     {
@@ -133,7 +133,5 @@ class CartSection extends Component
         // Dispatch delivery to frontpage-section
         $this->dispatch('deliveryUpdated', $this->delivery);
     }
-
-
 
 }
