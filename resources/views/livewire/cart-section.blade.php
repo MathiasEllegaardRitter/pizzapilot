@@ -2,14 +2,15 @@
 
 
 <div class="flex flex-col justify-between {{ ($summary ?? false) ? '' : 'absolute top-0 right-0' }}  p-4 bg text-white w-1/4 h-full z-10 rounded-lg p-4 cart-background">
-    @if ($summary == false)
-    <img wire:click="closeCart" class="absolute top-0 right-0 h-5 w-5 red-400 m-4 hover:cursor-pointer" src="{{ asset('storage/icons/cross 1.svg') }}" alt="Icon">
+    {{-- @if ($summary == false) --}}
+    <img wire:click="closeCart" class=" {{ ($summary ?? false) ? 'hidden' : '' }}    absolute top-0 right-0 h-5 w-5 red-400 m-4 hover:cursor-pointer" src="{{ asset('storage/icons/cross 1.svg') }}" alt="Icon">
     <div>
     <div class="w-full justify-center border-b-2 border-slate-600 p-4 text-lg font-bold">
         <h1> Shopping Cart </h1>
 
     </div>
-    @endif
+    {{-- @else
+    @endif --}}
 
     @if(is_array($cart) && count($cart) > 0)
     @if ($summary == false)

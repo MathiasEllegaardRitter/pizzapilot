@@ -21,8 +21,6 @@
             @endif              
 
     @endif
-    
-    <livewire:scripts />
     </div>
 </div>
 
