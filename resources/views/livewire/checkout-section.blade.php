@@ -11,7 +11,7 @@
     </div>
 
     <div class="h-5/6 w-full mt-8"> 
-        <livewire:review-order-section />
+        <livewire:review-order-section  />
     </div>
 
 
