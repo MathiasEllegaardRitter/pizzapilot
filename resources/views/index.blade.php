@@ -9,9 +9,9 @@
     @vite('resources/js/custom.js')
 </head>
 <body class="min-h-screen h-full w-full bg-Color">
-        {{-- <livewire:frontpage-section /> --}}
+        <livewire:frontpage-section />
 
-        <livewire:checkout-section/>
+        {{-- <livewire:checkout-section/> --}}
         <livewire:scripts />
 </body>
 </html>
