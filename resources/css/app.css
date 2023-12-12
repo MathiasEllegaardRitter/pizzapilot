@@ -77,8 +77,6 @@
     width: clamp(200px, 25vw, 600px) !important;
     animation: fly-in 1s forwards, rumble 0.5s infinite linear 1s;
     transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
 }
 
 
@@ -117,7 +115,7 @@
     }
     100%{
         left: 50%;
-        top: 25%;
+        top: 35%;
         opacity: 1;
     }
  }
