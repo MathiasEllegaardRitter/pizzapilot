@@ -10,10 +10,13 @@
         <livewire:steps-ahead-section />
     </div>
 
-    <div class="h-5/6 w-full mt-8"> 
+    <div class="{{ ($step == 'review') ? '' : 'hidden' }} h-5/6 w-full mt-8"> 
         <livewire:review-order-section  />
     </div>
 
-
+    <div class="{{ ($step == 'delivery') ? '' : 'hidden' }} h-5/6 w-full mt-8"> 
+        <livewire:delivery-order-section  />
+    </div>
+    
 </div>
     
