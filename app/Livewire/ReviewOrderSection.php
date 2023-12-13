@@ -10,4 +10,10 @@ class ReviewOrderSection extends Component
     {
         return view('livewire.review-order-section');
     }
+
+    public function stepChanged()
+    {
+        $this->dispatch("stepChanged", "delivery");
+    }
+
 }
