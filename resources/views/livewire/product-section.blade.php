@@ -6,8 +6,10 @@
             {{-- Display the filled heart icon if the product is favorited --}}
                 <img class="w-5 h-5 hover:cursor-pointer" wire:click="toggleFavorite({{ $product->id }})" src="{{ asset('storage/icons/Heart.svg') }}" alt="Heart full Icon">
             @else
+                @if(auth()->check() )
                 {{-- Display the empty heart icon if the product is not favorited --}}
                 <img class="w-5 h-5 heart-icon hover:cursor-pointer" wire:click="toggleFavorite({{ $product->id }})" src="{{ asset('storage/icons/hearts.png') }}" alt="Heart empty Icon">
+                @endif
             @endif
             <img wire:click="clickProduct({{ $product->id }})" class="w-24 h-24 hover:cursor-pointer m-auto" src="{{ asset('storage/' . $product->image) }}" alt="Icon">
 

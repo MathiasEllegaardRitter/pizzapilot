@@ -18,12 +18,16 @@
         </div>
     </div>
 
-    <div wire:click="favorites" class="hover:cursor-pointer flex flex-col items-center">
-        <img class="w-8 h-8" src="{{ asset('storage/icons/Heart.svg') }}" alt="Icon">
-        <div>
-        Favorites
+    @if (auth()->check())
+        <div wire:click="favorites" class="hover:cursor-pointer flex flex-col items-center">
+            <img class="w-8 h-8" src="{{ asset('storage/icons/Heart.svg') }}" alt="Icon">
+            <div>
+            Favorites
+            </div>
         </div>
-    </div>
+    @else
+        
+    @endif
 
     <div wire:click="message" class="hover:cursor-pointer flex flex-col items-center">
         <img class="w-8 h-8" src="{{ asset('storage/icons/Envelope.svg') }}" alt="Icon">
