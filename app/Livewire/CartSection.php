@@ -72,11 +72,22 @@ class CartSection extends Component
         }
         $this->persistCart();
     }
+
+    public function increaseQuantity($item)
+    {
+        $itemArray = json_decode($item, true);
+        $index = array_search($itemArray['product_id'], array_column($this->cart, 'product_id'));
+
+        if($index !== false)
+        {
+            $this->cart[$index]['quantity'] += 1;
+            $this->persistCart();
+        }
+    }
     
     public function removeFromCart($item)
     {
         $itemArray = json_decode($item, true);
-
         $index = array_search($itemArray['product_id'], array_column($this->cart, 'product_id'));
 
         if($index !== false)
@@ -89,14 +100,16 @@ class CartSection extends Component
         }
     }
 
-    public function addQuanity()
+    public function decreaseQuantity($item)
     {
-        dd("test add");
-    }
+        $itemArray = json_decode($item, true);
+        $index = array_search($itemArray['product_id'], array_column($this->cart, 'product_id'));
 
-    public function decreaseQuantity()
-    {
-        dd("test decrease");
+        if($index !== false && $this->cart[$index]['quantity'] > 1)
+        {
+            $this->cart[$index]['quantity'] -= 1;
+            $this->persistCart();
+        }
     }
 
     public function removeAll()
