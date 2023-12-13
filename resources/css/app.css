@@ -77,10 +77,29 @@
     width: clamp(200px, 25vw, 600px) !important;
     animation: fly-in 1s forwards, rumble 0.5s infinite linear 1s;
     transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
 }
 
+
+ .plane::before
+{
+   display: block;
+   position: absolute;
+   width: 10%;
+   height: 10%;
+   transform: translate(-0%, -0%);
+   left: 0%;
+   top: 0%;
+}
+
+@media (min-width: 2400px) {
+    .plane{
+        position: absolute;
+        height: clamp(200px, 25vw, 600px) !important;
+        width: clamp(200px, 25vw, 600px) !important;
+        animation: fly-in 1s forwards, rumble 0.5s infinite linear 1s;
+        transform: translate(-50%, -35%);
+    }
+}
 
 @keyframes rumble {
     0% { transform: translate(-50%, -50%) rotate(0deg); -webkit-transform: translate(-50%, -50%) rotate(0deg); -moz-transform: translate(-50%, -50%) rotate(0deg); -ms-transform: translate(-50%, -50%) rotate(0deg); -o-transform: translate(-50%, -50%) rotate(0deg); }
@@ -100,7 +119,7 @@
     }
     100%{
         left: 50%;
-        top: 25%;
+        top: 35%;
         opacity: 1;
     }
  }

@@ -44,6 +44,7 @@ class OrderCreate extends Component
         // }   else {
         //     $this->errorMessage = 'need items';
         // }
+        $this->dispatch("closeCart");
         $this->dispatch('showCheckout', true);
     }
 }

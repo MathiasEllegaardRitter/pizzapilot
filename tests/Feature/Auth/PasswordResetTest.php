@@ -1,5 +1,4 @@
 <?php
-
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
@@ -9,6 +8,7 @@ use Illuminate\Support\Facades\Notification;
 use Livewire\Volt\Volt;
 use Tests\TestCase;
 
+// Password reset
 class PasswordResetTest extends TestCase
 {
     use RefreshDatabase;

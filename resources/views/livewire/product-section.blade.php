@@ -31,6 +31,4 @@
 
         </div>
     @endforeach
-
-    <livewire:scripts />
 </div>

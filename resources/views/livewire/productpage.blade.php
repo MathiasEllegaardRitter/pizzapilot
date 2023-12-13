@@ -34,7 +34,7 @@
             
             <div class="py-5 mb-12 mx-auto my-auto flex items-center">
                 <button class="ml-24 bg-orange-400 text-white px-10 py-4 hover:text-black font-bold rounded-xl">Add Order</button>
-                <p class="ml-24 text-orange-400 font-inter font-thin text-5xl">{{ $product->price * $count }} $</p>
+                <p class="ml-24 text-orange-400 font-inter font-thin text-5xl">$ {{ $product->price * $count }}</p>
             </div>
         </section>
     

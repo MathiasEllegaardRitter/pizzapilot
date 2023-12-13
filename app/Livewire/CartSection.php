@@ -11,7 +11,22 @@ class CartSection extends Component
     public $cart;
     public $delivery;
 
+    public $summary;
+    protected $debug = true;
+
     public function mount()
+    {
+        $this->initializeCart(); 
+    }
+
+    public function render()
+    {
+        $this->cart = session('cart');
+        // returns he cart with all the products
+        return view('livewire.cart-section')->with('cart', $this->cart)->with('delivery', $this->delivery);
+    }
+
+    public function initializeCart()
     {
         $this->cart = session('cart');
 
@@ -30,13 +45,7 @@ class CartSection extends Component
         }
     }
 
-    public function render()
-    {
-        $this->cart = session('cart');
-        // returns he cart with all the products
-        return view('livewire.cart-section')->with('cart', $this->cart)->with('delivery', $this->delivery);
-    }
-
+    #[On('closeCart')]
     public function closeCart()
     {
         $result = false;
@@ -62,15 +71,24 @@ class CartSection extends Component
                 'quantity' => 1,
             ];
         }
-        // Then we persist it in a session so it can be used on different pages with the help of the mount function
-        session(['cart' => $this->cart]);
-        $this->dispatch('hasItemsInCart');
+        $this->persistCart();
+    }
+
+    public function increaseQuantity($item)
+    {
+        $itemArray = json_decode($item, true);
+        $index = array_search($itemArray['product_id'], array_column($this->cart, 'product_id'));
+
+        if($index !== false)
+        {
+            $this->cart[$index]['quantity'] += 1;
+            $this->persistCart();
         }
+    }
     
     public function removeFromCart($item)
     {
         $itemArray = json_decode($item, true);
-
         $index = array_search($itemArray['product_id'], array_column($this->cart, 'product_id'));
 
         if($index !== false)
@@ -79,26 +97,26 @@ class CartSection extends Component
 
         $this->cart = array_values($this->cart);
 
-        session(['cart' => $this->cart]);
-        $this->dispatch('hasItemsInCart');
+        $this->persistCart();
         }
     }
 
-    public function addQuanity()
+    public function decreaseQuantity($item)
     {
-        dd("test add");
-    }
+        $itemArray = json_decode($item, true);
+        $index = array_search($itemArray['product_id'], array_column($this->cart, 'product_id'));
 
-    public function decreaseQuantity()
-    {
-        dd("test decrease");
+        if($index !== false && $this->cart[$index]['quantity'] > 1)
+        {
+            $this->cart[$index]['quantity'] -= 1;
+            $this->persistCart();
+        }
     }
 
     public function removeAll()
     {
         $this->cart = [];
-        session(['cart' => []]);
-        $this->dispatch('hasItemsInCart');
+        $this->persistCart();
     }
 
     private function findExistingProduct($productId, $productName, $productPrice): Product
@@ -133,6 +151,13 @@ class CartSection extends Component
         // Dispatch delivery to frontpage-section
         $this->dispatch('deliveryUpdated', $this->delivery);
     }
+
+    protected function persistCart()
+    {
+        session(['cart' => $this->cart]);
+        $this->dispatch('hasItemsInCart');
+    }
+
 
 
 
