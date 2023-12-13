@@ -6,6 +6,10 @@
         @if ($showProduct == true)
         <livewire:productpage :productId="$productId" /> 
         @else 
+
+        @if ($showFavorites == true)
+        <livewire:favoritespage /> 
+        @else 
             
             <livewire:hero-section />
             
@@ -18,8 +22,11 @@
             
             @if ($showCheckout == true)
             <livewire:checkout-section :delivery="$delivery" /> 
-            @endif              
+            @endif
+            
+        
 
+    @endif
     @endif
     
     <livewire:scripts />

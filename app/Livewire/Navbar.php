@@ -10,7 +10,6 @@ class Navbar extends Component
    
     public $hasItemsInCart;
 
-
     public function mount()
     {
         $this->hasItemsInCart();
@@ -48,7 +47,8 @@ class Navbar extends Component
 
     public function favorites()
     {
-        return redirect('/favorites');;
+        $result = true;
+        $this->dispatch('showFavorites', $result);
     }
 
     public function user()

@@ -2,9 +2,8 @@
     {{-- The Master doesn't talk, he acts. --}}
     @foreach ($products as $product)
         <div class="flex flex-col section-card-width p-4">
-
-        
-        <img wire:click="clickProduct({{ $product->id }})" class="w-24 h-24 hover:cursor-pointer m-auto" src="{{ asset('storage/' . $product->image) }}" alt="Icon">
+            <img class="w-5 h-5 hover:cursor-pointer" wire:click="toggleFavorite({{ $product->id }})" src="{{ asset('storage/icons/hearts.png') }}" alt="Heart Icon">
+            <img wire:click="clickProduct({{ $product->id }})" class="w-24 h-24 hover:cursor-pointer m-auto" src="{{ asset('storage/' . $product->image) }}" alt="Icon">
 
 
             <h1 class="text-lg font-bold mt-2">{{$product->name}}</h1>
