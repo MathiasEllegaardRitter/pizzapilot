@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+
+        Route::post('/toggle-favorite/{productId}', [FavoriteController::class, 'toggleFavorite'])->name('toggle.favorite');
+        Route::get('/favorites', [FavoriteController::class, 'viewFavorites'])->name('favorites.index');
     });
+
 
 
 

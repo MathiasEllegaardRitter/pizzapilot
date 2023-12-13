@@ -1,6 +1,6 @@
 <article class="2xl:mt-48 md:mt-20 mt-40 w-full mx-auto flex flex-row">
         <section class="w-3/6">
-            <h1 class="2xl:text-5xl ml-24 mb-12 py-2 pt-5 text-white font-inter text-4xl">{{ $product->name }}</h1>
+            <h1 class="2xl:text-5xl ml-24 mb-12 py-2 pt-5 text-white text-3xl">{{ $product->name }}</h1>
             <p class="2xl:text-4xl ml-24 w-4/6 mb-10 py-2 pt-5 text-white font-inter font-thin text-4xl"> {{ $product->description }} </p>
     
             <h2 class="ml-24 mb-6 text-white font-inter text-3xl">Ingredients</h2>

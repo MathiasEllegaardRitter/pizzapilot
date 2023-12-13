@@ -17,6 +17,7 @@ use App\Models\Order;
 use App\Models\item_order;
 use App\Models\Item;
 use App\Models\Customer;
+use App\Models\favorites;
 
 class DatabaseSeeder extends Seeder
 {
@@ -448,6 +449,11 @@ class DatabaseSeeder extends Seeder
             'quantity' => 1,
             'order_id' => 1,
             'item_id' => 3,
+        ]);
+
+        favorites::create([
+            'customer_id' => 1,
+            'product_id' => 4,
         ]);
 
 
