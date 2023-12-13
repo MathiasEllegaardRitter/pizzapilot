@@ -39,10 +39,10 @@
                 
 
                 <div class="flex flex-row space-x-4 items-center">
-                    <div class="flex flex-row">
-                        <button class="bg-white 2xl:px-3 2xl:py-1 px-1.5 bg-white cursor-pointer hover:text-orange-400 font-bold text-black rounded mr-2" wire:click="decrement">-</button>
+                    <div class="flex flex-row items-center">
+                        <button class="bg-white 2xl:px-3 2xl:py-1 px-1.5 bg-white cursor-pointer hover:text-orange-400 font-bold text-black rounded mr-2" wire:click="decreaseQuantity('{{ json_encode($item) }}')">-</button>
                         {{ $item['quantity'] }}
-                        <button class="bg-white 2xl:px-3 2xl:py-1 px-1.5 bg-white cursor-pointer hover:text-orange-400 font-bold text-black rounded ml-2" wire:click="increment">+</button>
+                        <button class="bg-white 2xl:px-3 2xl:py-1 px-1.5 bg-white cursor-pointer hover:text-orange-400 font-bold text-black rounded ml-2" wire:click="increaseQuantity('{{ json_encode($item) }}')">+</button>
                     </div>
                     <div class="flex flex-col items-center p-4">
                         ${{ $item['product_price'] * $item['quantity'] }}
