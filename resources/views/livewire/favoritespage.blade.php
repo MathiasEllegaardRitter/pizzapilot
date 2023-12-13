@@ -21,7 +21,7 @@
                         <div class="flex flex-row space-x-2 text-stone-500 overflow-hidden max-w-xs flex-wrap">
                             @if (count($product->ingredients) > 0)
                                 @foreach ($product->ingredients as $ingredient)
-                                    <h1 class="overflow-ellipsis">{{$product->name}}</h1>
+                                    <h1 class="overflow-ellipsis">{{$ingredient->name}}</h1>
                                 @endforeach
                             @endif
                         </div>
@@ -37,5 +37,4 @@
                 <p class="text-3xl text-3xl text-center text-white">No favorites yet.</p>
             @endif
     </div>
-    <livewire:scripts />
 </div>
