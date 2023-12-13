@@ -15,28 +15,29 @@ class Favoritespage extends Component
     public $product_id, $user_id;
 
     public $products;
-    public $product;
+
 
     public function clickProduct($productId)
     {
         $this->dispatch('clickProduct', $productId);
     }
     
-    public function toggleFavorite(Request $request, $ProductId)
+    public function toggleFavorite($productId)
     {
-        $customer = auth()->user();
+        $user = auth()->user();     
+        $customer = $user->customer;
 
         if ($customer->favorites->contains($productId)) {
             // Remove from favorites
-            $customer->favorites->detach($ProductId);
+            $customer->favorites()->detach($productId);
             $message = 'Item removed from favorites.';
         } else {
             // Add to favorites
-            $customer->favorites->attach($ProductId);
+            $customer->favorites()->attach($productId);
             $message = 'Item added to favorites.';
         }
 
-        return redirect()->back()->with('message', $message);
+        $this->dispatch('favoritesUpdated');
     }
 
     public function addToCart($productId)
