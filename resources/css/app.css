@@ -92,8 +92,12 @@
 }
 
 @media (min-width: 2400px) {
-    .plane {
-        margin-top: -12svh;
+    .plane{
+        position: absolute;
+        height: clamp(200px, 25vw, 600px) !important;
+        width: clamp(200px, 25vw, 600px) !important;
+        animation: fly-in 1s forwards, rumble 0.5s infinite linear 1s;
+        transform: translate(-50%, -35%);
     }
 }
 
