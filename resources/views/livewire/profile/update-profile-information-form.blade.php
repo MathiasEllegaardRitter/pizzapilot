@@ -10,11 +10,17 @@ new class extends Component
     public string $name = '';
 
     public string $email = '';
+    
+    public string $phonenumber = '';
 
     public function mount(): void
     {
         $this->name = auth()->user()->name;
         $this->email = auth()->user()->email;
+        $phonenumber = auth()->user()->phonenumber;
+        if ($phonenumber !== null) {
+            $this->phonenumber = auth()->user()->phonenumber;
+        }
     }
 
     public function updateProfileInformation(): void
@@ -24,6 +30,7 @@ new class extends Component
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            'phonenumber' => ['nullable', 'integer'],
         ]);
 
         $user->fill($validated);
@@ -95,6 +102,12 @@ new class extends Component
                     @endif
                 </div>
             @endif
+        </div>
+
+        <div>
+            <x-input-label for="phonenumber" :value="__('Phonenumber')" />
+            <x-text-input wire:model="phonenumber" id="phonenumber" name="phonenumber" type="tel" pattern="[0-9]{8}" class="mt-1 block w-full" nullable autocomplete="phone"/>
+            <x-input-error class="mt-2" :messages="$errors->get('tel')" />
         </div>
 
         <div class="flex items-center gap-4">
