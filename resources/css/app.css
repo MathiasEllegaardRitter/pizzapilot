@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:hover {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Removes unnecessary white edges at top and bottom, when scrolling hard. */
+body {
+    overscroll-behavior: none;
+}
+
 .bg-Checkout
 {
     --tw-bg-opacity: 1;
@@ -152,3 +161,28 @@
     z-index: 2;
 }
 
+.cartMenuSlideIn {
+    animation: slide-in-from-left 0.3s ease-in-out;
+}
+
+@keyframes  slide-in-from-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.cartMenuSlideOut {
+    animation: slide-out-to-left 0.3s ease-in-out;
+}
+
+@keyframes  slide-out-to-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
