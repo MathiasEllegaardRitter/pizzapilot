@@ -37,4 +37,7 @@
                 <p class="text-3xl text-3xl text-center text-white">No favorites yet.</p>
             @endif
     </div>
+    @if ($showCart == true)
+    <livewire:cart-section :delivery="false" :summary="false"/> 
+    @endif
 </div>

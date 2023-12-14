@@ -7,14 +7,25 @@ use App\Models\Favorites;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Livewire\Attributes\On;
 class Favoritespage extends Component
 {
     public $favorites;
 
-    public $product_id, $user_id;
-
     public $products;
+
+    public $showCart;
+
+    public function mount()
+    {
+        $this->showCart = false;
+    }
+
+    #[On('showCart')]
+    public function showCart($result)
+    {
+        $this->showCart = $result;
+    }
 
 
     public function clickProduct($productId)
@@ -30,11 +41,9 @@ class Favoritespage extends Component
         if ($customer->favorites->contains($productId)) {
             // Remove from favorites
             $customer->favorites()->detach($productId);
-            $message = 'Item removed from favorites.';
         } else {
             // Add to favorites
             $customer->favorites()->attach($productId);
-            $message = 'Item added to favorites.';
         }
 
         $this->dispatch('favoritesUpdated');
@@ -42,16 +51,22 @@ class Favoritespage extends Component
 
     public function addToCart($productId)
     {
-        $product = $this->products->find($productId);
-        if($product != null) {
-            $this->addProductToSession($product);
-            $this->dispatch('showCart',  true);
-            $this->dispatch('addToCart', $product);
-        } else
-        {
+        // Ensure $this->products is not null before trying to find the product
+        if ($this->products) {
+            $product = $this->products->find($productId);
+    
+            if ($product != null) {
+                $this->addProductToSession($product);
+                $this->dispatch('showCart', true);
+                $this->dispatch('addToCart', $product);
+            } else {
+
+            }
+        } else {
 
         }
     }
+    
 
     public function addProductToSession($product)
     {
@@ -90,8 +105,18 @@ class Favoritespage extends Component
      
     public function render()
     {
-        $this->favorites=auth()->user()->favorites;
-        return view('livewire.favoritespage')->with('favorites', $this->favorites);
+        $this->favorites = auth()->user()->favorites;
+    
+        // Fetch products only if favorites are not empty
+        $this->products = $this->favorites->isNotEmpty()
+            ? Product::whereIn('id', $this->favorites->pluck('id'))->get()
+            : collect(); // Initialize as an empty collection if no favorites
+    
+        return view('livewire.favoritespage')
+            ->with('favorites', $this->favorites)
+            ->with('products', $this->products)
+            ->with('showCart', $this->showCart);
     }
+    
     
 }
