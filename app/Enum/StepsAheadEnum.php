@@ -10,6 +10,6 @@ class StatusEnum
     const REVIEW = 'review';
     // When the payment
     const PAYMENT = 'paymnet';
-    // When the confirmation
+        // When the confirmatin
     const CONFIRMATION = 'confirmation';
 }
