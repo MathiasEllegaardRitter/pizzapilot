@@ -9,11 +9,19 @@ class StepsAheadSection extends Component
 
     public $step = 'review';
 
-    public function render()
+    public $isDelivery;
+
+    public function mount($delivery)
     {
-        return view('livewire.steps-ahead-section')->with("step", $this->step);
+        // dd($delivery);
+        $this->isDelivery = $delivery;
     }
 
+    public function render()
+    {
+        return view('livewire.steps-ahead-section')->with("step", $this->step)->with('isDelivery', $this->isDelivery);
+    }
+    
     public function active($step)
     {
         $this->step = $step;
