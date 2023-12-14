@@ -13,6 +13,6 @@
 
         {{-- <livewire:checkout-section/> --}}
         
-        <livewire:scripts />
+        {{-- <livewire:scripts /> --}}
 </body>
 </html>
