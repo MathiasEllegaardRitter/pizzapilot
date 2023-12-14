@@ -12,7 +12,6 @@
             <div>
                 <livewire:pages.auth.login>
             </div>
-            
         </div>
 
         <!-- (guest) order -->
@@ -31,6 +30,14 @@
 
     @else
     <!-- User is authenticated -->
-    <p>Welcome, {{ Auth::user()->name }}</p>
+    <div class="flex flex-col w-full itenms-center">
+        <div class="w-1/3 self-center">
+            <p class="text-2xl font-bold text-white">Welcome, {{ Auth::user()->name }}</p>
+            <livewire:delivery-form>  
+        </div>
+    </div>
+    
+    
+
     @endguest
 </div>
