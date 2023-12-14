@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\DeliveryAddress;
+use App\Models\Order;
 
 class DeliveryForm extends Component
 {
@@ -37,6 +38,7 @@ class DeliveryForm extends Component
         } else{
             $this->GetDeliveryFromDatabase();
         }
+        $this->setOrder($this->delivery);
     }
 
     private function AuthGetDeliveryFromDatabase()
@@ -83,6 +85,25 @@ class DeliveryForm extends Component
                 'postal_code' => $this->pincode,
             ]);
         }  
+    }
+
+    private function setOrder($delivery)
+    {
+        $orderId = session('orderid');
+
+        $order = Order::find($orderId);
+
+        if(auth()->check() && $order)
+        {
+            $order->customer_id = $this->customer->id;
+        }
+        
+        if ($order) {
+            $order->delivery_addresse_id = $delivery->id;
+            $order->save();
+        } else {
+            // Give an error to user;
+        }
     }
 
 };

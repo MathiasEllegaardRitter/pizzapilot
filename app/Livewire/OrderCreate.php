@@ -27,23 +27,26 @@ class OrderCreate extends Component
     // Need an queue and async
     public function createOrder()
     {
-        // if (count($this->items) >= 0) {
-        // $order = Order::create([
-        //     'status' => StatusEnum::CREATED,
-        // ]);
+        if (count($this->items) >= 0) {
+        $order = Order::create([
+            'status' => StatusEnum::CREATED,
+        ]);
         
-        // foreach ($this->items as $item) {
-        //     $newItem = Item::create([
-        //         'product_id'=> $item['product_id'],
-        //     ]);
-        //     item_order::create([
-        //         'item_id'=> $newItem->id,
-        //         'order_id' => $order->id
-        //     ]);
-        // }
-        // }   else {
-        //     $this->errorMessage = 'need items';
-        // }
+        foreach ($this->items as $item) {
+            $newItem = Item::create([
+                'product_id'=> $item['product_id'],
+            ]);
+            item_order::create([
+                'item_id'=> $newItem->id,
+                'order_id' => $order->id
+            ]);
+        }
+        }   else {
+            $this->errorMessage = 'need items';
+        }
+        
+        session(['orderid' => $order->id]);
+
         $this->dispatch("closeCart");
         $this->dispatch('showCheckout', true);
     }
