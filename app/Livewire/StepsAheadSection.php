@@ -7,7 +7,7 @@ use Livewire\Component;
 class StepsAheadSection extends Component
 {
 
-    public $step;
+    public $step = 'review';
 
     public function render()
     {
