@@ -161,6 +161,7 @@ body {
     z-index: 2;
 }
 
+
 .cartMenuSlideIn {
     animation: slide-in-from-left 0.3s ease-in-out;
 }
@@ -185,4 +186,22 @@ body {
     100% {
         transform: translateX(100%);
     }
+
+/* Define the keyframes for the pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Apply the pulse animation on hover */
+.heart-icon:hover {
+    animation: pulse 0.5s infinite;
+
 }

@@ -7,13 +7,21 @@ use Livewire\Component;
 class StepsAheadSection extends Component
 {
 
-    public $step;
+    public $step = 'review';
+
+    public $isDelivery;
+
+    public function mount($delivery)
+    {
+        // dd($delivery);
+        $this->isDelivery = $delivery;
+    }
 
     public function render()
     {
-        return view('livewire.steps-ahead-section')->with("step", $this->step);
+        return view('livewire.steps-ahead-section')->with("step", $this->step)->with('isDelivery', $this->isDelivery);
     }
-
+    
     public function active($step)
     {
         $this->step = $step;

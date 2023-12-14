@@ -12,6 +12,7 @@ class CartSection extends Component
     public $delivery;
 
     public $summary;
+    protected $debug = true;
 
     public function mount()
     {

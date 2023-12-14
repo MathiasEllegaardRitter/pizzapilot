@@ -37,4 +37,9 @@ class Product extends Model
         return $this->belongsToMany(Menu::class, 'menu_products');
     }
 
+    public function favoritedBy()
+{
+    return $this->belongsToMany(Customer::class, 'favorites');
+}
+
 }

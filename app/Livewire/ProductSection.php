@@ -6,11 +6,16 @@ use Livewire\Component;
 use App\Models\Category;
 use Livewire\Attributes\On;
 use App\Models\Product;
+use App\Models\User;
+use App\Livewire\Auth;
 
 class ProductSection extends Component
 {
     public Category $mainCategory;
     public $products;
+    
+    // check
+    public $favoriteStatus = []; 
 
     public function clickProduct($productId)
     {
@@ -60,8 +65,6 @@ class ProductSection extends Component
         session(['cart' => $cart]);
     }
 
-
-
     private function findExistingProductIndexInCart($productId, $productName, $productPrice)
     {
         $cart = session('cart', []);
@@ -75,12 +78,11 @@ class ProductSection extends Component
         return false;
     }
 
-
-
-
     public function mount($mainCategory)
     {
         $this->mainCategory = $mainCategory;
+        // Initialize the favorite status array with product IDs
+        $this->favoriteStatus = array_fill_keys($this->mainCategory->products->pluck('id')->toArray(), false);
     }
 
     public function render()
@@ -92,4 +94,29 @@ class ProductSection extends Component
 
         return view('livewire.product-section')->with("products", $this->products);
     }
+
+    public function toggleFavorite($productId)
+    {
+        $user = auth()->user();     
+        $customer = $user->customer;
+
+        if ($customer->favorites->contains($productId)) {
+            // Remove from favorites
+            $customer->favorites()->detach($productId);
+            $message = 'Item removed from favorites.';
+        } else {
+            // Add to favorites
+            $customer->favorites()->attach($productId);
+            $message = 'Item added to favorites.';
+        }
+
+        // Optionally, you can emit an event or perform other actions here
+
+        // Refresh the Livewire component to reflect changes in the UI
+        $this->dispatch('favoritesUpdated');
+
+        // You can also use the following line to redirect back
+        // return redirect()->back()->with('message', $message);
+    }
+
 }

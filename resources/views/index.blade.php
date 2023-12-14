@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PizzaPilot</title>
     @vite('resources/css/app.css')
-    @vite('resources/js/custom.js')
+    {{-- @vite('resources/js/custom.js') --}}
 </head>
 <body class="min-h-screen h-full w-full bg-Color">
         <livewire:frontpage-section />
 
         {{-- <livewire:checkout-section/> --}}
         
-        <livewire:scripts />
+        {{-- <livewire:scripts /> --}}
 </body>
 </html>

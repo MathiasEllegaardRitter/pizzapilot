@@ -14,7 +14,7 @@ class CheckoutSection extends Component
 
     public function mount()
     {
-        $this->step = "delivery";
+        $this->step = "review";
     }
     
     public function render()

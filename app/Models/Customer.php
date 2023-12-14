@@ -31,4 +31,9 @@ class Customer extends Model
     {
         return $this->hasMany(DeliveryAddress::class);
     }
+
+    public function favorites()
+{
+    return $this->belongsToMany(Product::class, 'favorites');
+}
 }
