@@ -50,7 +50,7 @@
                         <label class="text-red-700 hover:cursor-pointer" wire:click="removeFromCart('{{ json_encode($item) }}')"> Remove</label>
                     </div>
                 </div>
-                {{-- Other properties --}} 
+                {{-- Other propertiesf --}} 
             </div>
     @endforeach
 </div>
