@@ -4,15 +4,17 @@
         <div class="flex flex-row space-x-2">
             <div class="flex flex-col">
                 <label class="text-white font-bold" for="city">City:</label>
-                <input class="border-gray-300 border-2 rounded" type="text" id="city" wire:model="City" placeholder="City">
+                <input class="border-gray-300 border-2 rounded" type="text" id="city" wire:model="city" placeholder="City">
             </div>
 
             <div class="flex flex-col">
             <label class="text-white font-bold" for="pincode">Pincode:</label>
-            <input class="border-gray-300 border-2 rounded" type="number" id="pincode" wire:model="Pincode"  placeholder="Pincode">
+            <input class="border-gray-300 border-2 rounded" type="number" id="pincode" wire:model="pincode"  placeholder="Pincode">
             </div>
         </div>
 
+        <label class="text-white font-bold" for="street">Street:</label>
+        <input class="border-gray-300 border-2 rounded" type="text" id="street" wire:model="street"  placeholder="Street">
 
         <label class="text-white font-bold" for="name">Name:</label>
         <input class="border-gray-300 border-2 rounded" type="text" id="name" wire:model="name"  placeholder="Name">

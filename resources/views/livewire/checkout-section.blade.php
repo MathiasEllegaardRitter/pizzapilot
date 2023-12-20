@@ -7,7 +7,8 @@
     </div>
 
     <div class="flex flex-row justify-center content-center w-full h-14"> 
-        <livewire:steps-ahead-section />
+        {{-- <livewire:steps-ahead-section :delivery=$delivery /> --}}
+        <livewire:steps-ahead-section :delivery=true />
     </div>
 
     <div class="{{ ($step == 'review') ? '' : 'hidden' }} h-5/6 w-full mt-8"> 

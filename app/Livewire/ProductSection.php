@@ -15,6 +15,9 @@ class ProductSection extends Component
     {
         $this->mainCategory = $mainCategory;
         $this->updateMainCategory($mainCategory->id); // Call the method to initialize $products
+        $this->dispatch('clickProduct', $productId);
+        session()->flash('success', 'Product has been favorited1');
+
     }
 
     #[On('mainCategoryUpdated')]
