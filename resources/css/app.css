@@ -186,7 +186,7 @@ body {
     100% {
         transform: translateX(100%);
     }
-
+}
 /* Define the keyframes for the pulse animation */
 @keyframes pulse {
     0% {
