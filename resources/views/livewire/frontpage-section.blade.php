@@ -16,17 +16,17 @@
             <livewire:menu-section />
             
             
-             @if ($showCart == true)
-            <livewire:cart-section :delivery="$delivery" :summary="false"/> 
-            @endif
             
             @if ($showCheckout == true)
             <livewire:checkout-section :delivery="$delivery" /> 
             @endif
             
-        
-
-         @endif
+            
+            
+            @endif
+        @if ($showCart == true)
+        <livewire:cart-section :delivery="$delivery" :summary="false"/> 
+        @endif
        @endif
     </div>
 </div>
