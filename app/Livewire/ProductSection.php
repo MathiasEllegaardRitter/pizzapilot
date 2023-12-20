@@ -20,6 +20,7 @@ class ProductSection extends Component
     public function clickProduct($productId)
     {
         $this->dispatch('clickProduct', $productId);
+        session()->flash('success', 'Product has been favorited1');
     }
 
     #[On('mainCategoryUpdated')]
@@ -37,9 +38,11 @@ class ProductSection extends Component
             $this->addProductToSession($product);
             $this->dispatch('showCart',  true);
             $this->dispatch('addToCart', $product);
+            // session()->flash('success', 'Product has been favorited3');
+            session()->flash('error', 'Product error has been favorited3');
+
         } else
         {
-
         }
     }
 
