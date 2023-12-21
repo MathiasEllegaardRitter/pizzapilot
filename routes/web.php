@@ -42,6 +42,13 @@ Route::view('profile', 'profile')
     ->name("login");
 
 
+
+    // Route::get('/product-checkout', function (Request $request) {
+    //     return $request->user()->checkout(['price_tshirt' => 1], [
+    //     'success_url' => route('your-success-route'),
+    //     'cancel_url' => route('your-cancel-route'),
+    //     ]);
+      
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // Your other authenticated routes here
     
@@ -52,8 +59,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('/toggle-favorite/{productId}', [FavoriteController::class, 'toggleFavorite'])->name('toggle.favorite');
         Route::get('/favorites', [FavoriteController::class, 'viewFavorites'])->name('favorites.index');
     });
-
-
 
 
 require __DIR__.'/auth.php';
