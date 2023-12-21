@@ -16,4 +16,8 @@ class Menu extends Model
         return $this->belongsToMany(Product::class, 'menu_products');
     }
 
+    public function pizza_stores()
+    {
+        return $this->belongsTo(PizzaStore::class);
+    }
 }
