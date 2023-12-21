@@ -187,6 +187,7 @@ body {
         transform: translateX(100%);
     }
 }
+
 /* Define the keyframes for the pulse animation */
 @keyframes pulse {
     0% {
@@ -198,6 +199,7 @@ body {
     100% {
         transform: scale(1);
     }
+
 }
 
 /* Apply the pulse animation on hover */

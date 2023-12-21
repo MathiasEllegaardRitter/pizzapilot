@@ -18,6 +18,8 @@ use App\Models\item_order;
 use App\Models\Item;
 use App\Models\Customer;
 use App\Models\favorites;
+use App\Models\PizzaStore;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,7 +36,25 @@ class DatabaseSeeder extends Seeder
         // ]);
         // Breakes::factory(8)->create();
         // Product::factory(5)->create();
-        User::factory()->create();
+        User::Create([
+            'name' => 'Admin',
+            'email' => 'Admin@ucn.com',
+            'email_verified_at' => now(),
+            'password' => 'password', // password
+            'remember_token' => Str::random(10)
+        ]);
+
+        User::factory(2)->create();
+
+        PizzaStore::create([
+            'location' => 'Aalborg',
+            'user_id' => 1,
+        ]);
+        
+        PizzaStore::create([
+            'location' => 'Aarhus',
+            'user_id' => 2,
+        ]);
         
         Customer::create([
             'user_id'=> 1,
@@ -226,6 +246,7 @@ class DatabaseSeeder extends Seeder
         Menu::create([
             'menu_name' => 'Main Menu',
             'is_active' => 1,
+            'pizza_stores_id' => 1,
         ]);
 
         Ingredient_product::create([

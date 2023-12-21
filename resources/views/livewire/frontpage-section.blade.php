@@ -4,24 +4,24 @@
         <livewire:navbar />
 
         @if ($showProduct == true)
-        <livewire:productpage :productId="$productId" /> 
+        <livewire:productpage :productId="$productId" lazy /> 
         @else 
 
         @if ($showFavorites == true)
-        <livewire:favoritespage /> 
+        <livewire:favoritespage lazy/> 
         @else 
             
-            <livewire:hero-section />
+            <livewire:hero-section lazy />
             
-            <livewire:menu-section />
+            <livewire:menu-section lazy />
             
             
              @if ($showCart == true)
-            <livewire:cart-section :delivery="$delivery" :summary="false"/> 
+            <livewire:cart-section :delivery="$delivery" :summary="false" lazy /> 
             @endif
             
             @if ($showCheckout == true)
-            <livewire:checkout-section :delivery="$delivery" /> 
+            <livewire:checkout-section :delivery="$delivery" lazy /> 
             @endif
             
         
