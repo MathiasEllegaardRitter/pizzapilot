@@ -17,8 +17,13 @@ class Productpage extends Component
     public function mount($productId)
     {
         $this->product = Product::find($productId);
+ 
+        if (!$this->product) {
+            // Handle the case where the product is not found
+            abort(404); // Or set default values or perform other actions
+        }
+ 
         $this->product->load('ingredients');
-
         $this->pizzaSizeButtons = [
             'Kids' => false,
             'Normal' => false,
