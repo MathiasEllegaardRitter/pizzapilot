@@ -85,3 +85,5 @@ class CartSectionTest extends TestCase
         session(['cart' => $cart]);
     }
 }
+
+// Commando to run test: ./vendor/bin/pest tests/Feature/livewire/CartSectionTest.php

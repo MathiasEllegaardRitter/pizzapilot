@@ -43,5 +43,5 @@ class OrderTest extends TestCase
 
         $this->assertEquals($orderCount+1, Order::count());
     }
-
 }
+// Commando to run test: ./vendor/bin/pest tests/Feature/livewire/OrderTest.php
