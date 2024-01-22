@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('delivery_addresses', function (Blueprint $table) {
+        Schema::create('delivery_checkers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('street');
-            $table->string('comment')->nullable();
-            $table->foreignId('zipcode_id')->nullable()->constrained();
-            $table->foreignId('customer_id')->nullable()->constrained();
+            $table->foreignId('zipcode_id')->references('id')->on('zipcodes')->onDelete('cascade');
+            $table->foreignId('pizza_store_id')->references('id')->on('pizza_stores')->onDelete('cascade');
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('delivery_addresses');
+        Schema::dropIfExists('delivery_checkers');
     }
 };

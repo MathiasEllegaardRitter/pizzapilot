@@ -20,6 +20,8 @@ use App\Models\Customer;
 use App\Models\favorites;
 use App\Models\PizzaStore;
 use Illuminate\Support\Str;
+use App\Models\DeliveryChecker;
+use App\Models\Zipcode;
 
 class DatabaseSeeder extends Seeder
 {
@@ -50,11 +52,32 @@ class DatabaseSeeder extends Seeder
             'location' => 'Aalborg',
             'user_id' => 1,
         ]);
-        
+
         PizzaStore::create([
             'location' => 'Aarhus',
             'user_id' => 2,
         ]);
+
+
+        // DeliveryChecker What Addesses can be  delivered to
+
+        Zipcode::create(
+            [
+                'zipcode' => 9800,
+                'city' => "Hjørring"
+            ]
+        ); 
+        
+
+        DeliveryChecker::create(
+            [
+                'zipcode' => 1,
+                'pizza_store_id' => 1
+            ]
+        ); 
+
+
+
         
         Customer::create([
             'user_id'=> 1,
