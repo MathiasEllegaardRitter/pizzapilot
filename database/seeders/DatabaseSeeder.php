@@ -67,17 +67,13 @@ class DatabaseSeeder extends Seeder
                 'city' => "Hjørring"
             ]
         ); 
-        
 
         DeliveryChecker::create(
             [
-                'zipcode' => 1,
+                'zipcode_id' => 1,
                 'pizza_store_id' => 1
             ]
         ); 
-
-
-
         
         Customer::create([
             'user_id'=> 1,

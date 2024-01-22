@@ -21,6 +21,13 @@ class PizzaStore extends Model
     {
         return $this->hasMany(Menu::class);
     }
+
+    public function delivery_checkers()
+    {
+        return $this->hasMany(DeliveryChecker::class);
+    }
+
+
 }
 
 

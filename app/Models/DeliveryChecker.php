@@ -10,4 +10,15 @@ class DeliveryChecker extends Model
 
     use HasFactory;
     protected $guarded = [];
+
+    public function pizza_store()
+    {
+       return  $this->belongsTo(PizzaStore::class);
+    }
+
+    public function zipcode()
+    {
+        return $this->belongsTo(Zipcode::class);
+    }
+
 }

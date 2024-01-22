@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\Category;
 use Livewire\Attributes\On;
 use Stevebauman\Location\Facades\Location;
+use App\Models\PizzaStore;
 
 class MenuSection extends Component
 {
@@ -25,20 +26,33 @@ class MenuSection extends Component
     {
         $ip = '92.43.73.5'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
-        dd($currentUserInfo);
 
-    
-        // Får pizza store med DeliveryChecker, går igennem zipcodes. 
+        // Får pizza store med DeliveryChecker, går igennem zipcodes.
+        $zipcode = $currentUserInfo->zipCode;
+
+        $pizzaStore = PizzaStore::whereHas('delivery_checkers.zipcode', function ($query) use ($zipcode) {
+            $query->where('zipcodes.zipcode', $zipcode);
+        })->first();
+
+        if ($pizzaStore) {
+            // The $pizzaStore variable now contains the PizzaStore associated with the provided Zipcode.
+            // You can proceed with any further processing you need.
+            dd($pizzaStore);
+
+            $this->menu = Menu::where('is_active', 1)->first();
+            $category = new Category();
+            $this->mainCategory = $category->getStartCategory($this->menu);
+            
+        } else {
+            // Handle the case where a PizzaStore is not found for the given Zipcode.
+            dd("false");
+        }
+
+
         // hvis den er er rigtig.
         // Send menuen med pizzastore der er active.
-        //
-
-
-
+        // 
         // Get pizzastore where it is most likely active.
-        $this->menu = Menu::where('is_active', 1)->first();
-        $category = new Category();
-        $this->mainCategory = $category->getStartCategory($this->menu);
     }
 
     public function render()
