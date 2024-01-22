@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('menu_name');
             $table->boolean('is_active')->default(false);
-            $table->foreignId('pizza_stores_id')->references('id')->on('pizza_stores')->onDelete('cascade');
+            $table->foreignId('pizza_store_id')->references('id')->on('pizza_stores')->onDelete('cascade');
         });
     }
 

@@ -18,6 +18,6 @@ class Menu extends Model
 
     public function pizza_stores()
     {
-        return $this->belongsTo(PizzaStore::class);
+        return $this->hasMany(Menu::class, 'pizza_stores_id');
     }
 }

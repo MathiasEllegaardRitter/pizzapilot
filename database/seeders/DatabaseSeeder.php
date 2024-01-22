@@ -265,7 +265,7 @@ class DatabaseSeeder extends Seeder
         Menu::create([
             'menu_name' => 'Main Menu',
             'is_active' => 1,
-            'pizza_stores_id' => 1,
+            'pizza_store_id' => 1,
         ]);
 
         Ingredient_product::create([
