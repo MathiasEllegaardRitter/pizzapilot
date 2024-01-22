@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->float('total_price')->unsigned()->default(0);;
+            $table->float('total_price')->unsigned()->default(0);
             $table->string('status')->nullable();
+            $table->boolean('delivery')->default(false);
             $table->foreignId("customer_id")->nullable()->constrained('customers')->cascadeOnDelete();
             $table->foreignId("delivery_addresse_id")->nullable()->constrained('delivery_addresses')->cascadeOnDelete();
         });

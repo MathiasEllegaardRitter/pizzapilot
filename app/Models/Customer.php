@@ -33,7 +33,7 @@ class Customer extends Model
     }
 
     public function favorites()
-{
-    return $this->belongsToMany(Product::class, 'favorites');
-}
+    {
+        return $this->belongsToMany(Product::class, 'favorites');
+    }
 }

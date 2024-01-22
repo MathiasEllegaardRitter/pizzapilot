@@ -43,10 +43,7 @@ class ProductResource extends Resource
                     ->relationship(name: 'category', titleAttribute: 'name'),
                 FileUpload::make('image')
                 ->acceptedFileTypes(['image/webp', 'image/png'])
-                ->maxSize(1500),
-                // ->imageResizeTargetWidth('1920') 
-                // ->imageResizeTargetHeight('1080')
-                
+                ->maxSize(1500),                
             ]);
     }
 

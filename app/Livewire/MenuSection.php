@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Menu;
 use App\Models\Category;
 use Livewire\Attributes\On;
+use Stevebauman\Location\Facades\Location;
 
 class MenuSection extends Component
 {
@@ -22,6 +23,19 @@ class MenuSection extends Component
 
     public function mount()
     {
+        $ip = '92.43.73.5'; /* Static IP address */
+        $currentUserInfo = Location::get($ip);
+        dd($currentUserInfo);
+
+    
+        // Får pizza store med DeliveryChecker, går igennem zipcodes. 
+        // hvis den er er rigtig.
+        // Send menuen med pizzastore der er active.
+        //
+
+
+
+        // Get pizzastore where it is most likely active.
         $this->menu = Menu::where('is_active', 1)->first();
         $category = new Category();
         $this->mainCategory = $category->getStartCategory($this->menu);
