@@ -24,7 +24,7 @@
             <livewire:checkout-section :delivery="$delivery" lazy /> 
             @endif
             
-            
+
 
          @endif
        @endif

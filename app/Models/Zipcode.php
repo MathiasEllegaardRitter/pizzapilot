@@ -9,6 +9,4 @@ class Zipcode extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
-    
 }

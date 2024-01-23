@@ -18,6 +18,7 @@ class MenuSection extends Component
     public Category $mainCategory;
     public Menu $menu;
     public bool $found;
+    public string $errorMessage;
 
     public $ip = '92.43.73.5'; /* true case */
     // public $ip = '67.97.38.151';  /* error case */
@@ -31,37 +32,37 @@ class MenuSection extends Component
 
     public function mount()
     {
-        // $ip = $this->setIp();
+        // $this->ip = $this->setIp();
         $this->found = false;
         try
         {
-        // Get the location
-        $currentUserInfo = Location::get($this->ip);
+             // Get the location
+            $currentUserInfo = Location::get($this->ip);
 
-        // Sets the zipcode, to a variable.
-        $zipcode = $currentUserInfo->zipCode;
+             // Sets the zipcode, to a variable.
+            $zipcode = $currentUserInfo->zipCode;
 
-        // Search for a pizzastore with zipcode
-        $pizzaStore = $this->searchForPizzaStore($zipcode);
-        
-        if (!$pizzaStore) {
-             // If no pizzaStore end method, and handle menu
-            $this->handleNoPizzaStore();
-            return;
-        }
-        // The $pizzaStore variable now contains the PizzaStore associated with the provided Zipcode.
-        $this->setMenuFromPizzaStore($pizzaStore);
+            // Search for a pizzastore with zipcode
+            $pizzaStore = $this->searchForPizzaStore($zipcode);
 
-        if(!$this->menu)
-        {
-            // If no menu end method, and handle menu
-            $this->handleNoMenu();
-            return;
-        }
-        
-        $this->setCategoryFromMenu();
-        $this->found = true;
-        
+            if (!$pizzaStore) {
+                // If no pizzaStore end method, and handle menu
+                $this->handleNoPizzaStore();
+                 return;
+            }
+             // The $pizzaStore variable now contains the PizzaStore associated with the provided Zipcode.
+            $this->setMenuFromPizzaStore($pizzaStore);
+
+            if(!$this->menu)
+            {
+                // If no menu end method, and handle menu
+                $this->handleNoMenu();
+                return;
+            }
+            // Set the category so it can be displayed
+            $this->setCategoryFromMenu();
+
+            $this->found = true;
         } catch(Exception $e) {
             $this->found = false;
         }
@@ -70,19 +71,14 @@ class MenuSection extends Component
     private function handleNoPizzaStore()
     {
         $this->found = false;
+        $this->errorMessage = "There's no pizza store to your location";
     }
 
     private function handleNoMenu()
     {
         $this->found = false;
+        $this->errorMessage = "There's no menu to your location";
     }
-
-
-
-
-
-
-
 
     private function searchForPizzaStore($zipcode)
     {
@@ -115,20 +111,17 @@ class MenuSection extends Component
     {
         try
         {
-        if($this->found == true)
-        {
-        $menu = $this->menu;
-
-        if ($menu != null) 
-        {
-            return view('livewire.menu-section')->with('menu', $menu)->with("mainCategory", $this->mainCategory);
-        }
-        } else {
-            return view('livewire.empty-menu-section');
-        }
-
+            if($this->found == true)
+            {
+                if ($this->menu != null) 
+                {
+                     return view('livewire.menu-section')->with('menu', $this->menu)->with("mainCategory", $this->mainCategory);
+                }
+             } else {
+                return view('livewire.empty-menu-section')->with("errorMessage", $this->errorMessage);
+            }
         } catch(Exception $e) {
-            return view('livewire.empty-menu-section');
+            return view('livewire.empty-menu-section')->with("errorMessage", $e->getMessage());
         } 
     }    
 }
