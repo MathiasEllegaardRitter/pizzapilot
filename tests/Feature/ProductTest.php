@@ -76,3 +76,4 @@ it('can delete', function () {
 
 
 // Commando to run test: ./vendor/bin/pest tests/Feature/ProductTest.php
+// Blackbox test feature tests

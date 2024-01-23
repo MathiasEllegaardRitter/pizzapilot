@@ -45,3 +45,4 @@ class OrderTest extends TestCase
     }
 }
 // Commando to run test: ./vendor/bin/pest tests/Feature/livewire/OrderTest.php
+// Blackbox test feature tests

@@ -87,3 +87,4 @@ class CartSectionTest extends TestCase
 }
 
 // Commando to run test: ./vendor/bin/pest tests/Feature/livewire/CartSectionTest.php
+// Blackbox test feature tests
